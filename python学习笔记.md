@@ -368,7 +368,7 @@
  
     class  Person:                                     
         num=1
-        def SayHello():                   
+        def SayHello(self):                   
             print("hello world!")
 
  ```
@@ -385,6 +385,10 @@
     }                                     
 
  ```
+
+&emsp;&emsp;<font color=#ff40 size=3 face="黑体">  类的方法与普通的函数只有一个特别的区别——它必须有一个额外的第一个参数名称，但是在调用这个方法的时候你不必为这个参数赋值，Python会提供这个值。这个特别的变量指对象本身，按照惯例它的名称是self，也可以用任何变量名称代替，python调用方法时会自动跳过第一个变量，从第二个赋值，但最好使用self。</font>
+
+&emsp;&emsp;<font color=#ff40 size=3 face="黑体"> 简单说，python中的self和Java的this一样，代表类的实例，而非类。更多关于self的详细的说明请参考</font>[https://blog.csdn.net/daocaoren1543169565/article/details/80626035](https://blog.csdn.net/daocaoren1543169565/article/details/80626035)
 
 <font color=#0422ff size=4 face="黑体">   2、类的使用 </font>
 
@@ -413,7 +417,100 @@
      //结果：hello world!
  ```
 
+
+
 ### 1.2.2 构造函数
+
+&emsp;&emsp;python和Java一样都具有构造函数，都是用来在对象实例化时对参数进行初始化操作。如果用户未涉及构造函数，则会提供一个默认的构造函数。在Python中使用<font color=#ff40 size=3 face="黑体">  固定的形式表示构造方法 </font>，如下：
+
+  ```python
+ 
+    def __init__(self,....):
+            #变量初始化
+            print("helloworld")
+            ...........
+
+ ```
+
+而在Java中使用和类名一致的函数名来定义构造函数。例如：
+
+  ```java
+    
+    class Person{
+        Person(){
+            变量初始化
+        }
+    }
+
+ ```
+
+&emsp;&emsp;<font color=#ff40 size=3 face="黑体"> 注意：一个class只能有一个用于构造对象的`__init__`函数，但python中的变量是无类型的,因此传给`__init__`的参数可以是任何类型。所以可以代替Java中重载和多态的思想</font>
+
+
+### 1.2.3 析构函数
+   
+&emsp;&emsp;Java自动进行内存回收。python也默认提供函数进行回收内存。此外python还提供一个内存回收函数（`__del__()`）。当使用del 删除对象时，系统自动调用 `__del__()` 析构函数进行内存释放，另外当对象在某个作用域中调用完毕，在跳出其作用域的同时析构函数也会被调用一次，这样可以用来释放内存空间。析构函数的演示调用如下：
+
+  ```python
+
+    class Test:
+        def __init__(self):
+            print("helloworld")
+        def __del__(self):
+             print("该对象已删除！")
+
+    x=Test()
+    del x
+
+    #运行后
+
+    helloworld
+    该对象已删除！
+
+
+ ```
+
+### 1.2.4 实例属性与类属性（成员变量）
+   
+&emsp;&emsp;属性又可以叫成员变量，其分为实例属性与类属性。简单说，实例属性就是在初始化时 `__init__()` 函数中定义的，定义与引用时都要在前加上对象名。而类属性就是在成员函数（方法）外定义的，使用时可以用对象名来引用或使用类名访问。<font color=#ff40 size=3 face="黑体"> 注意：如果实例对象中的类变量（程序中的num）没有重新赋值，则所有实例中的类变量共享同一值,但如果实例对象中的类变量被使用 `对象.类变量` 方式重新赋值，则各对象中的类变量（num）将新分配内存来存储，所以值将不同。</font>演示如下：
+
+
+  ```python
+
+    class Student:
+        num=1;
+        def __init__(self,str,n):
+            self.name=str
+            self.age=n
+        def SayHello(self):
+            print("Hello!")
+        def PrintName(self):
+            print("姓名：",self.name",年龄：",self.age)
+        def PrintNum(self):
+            print(Person.num)
+
+    #主程序
+    s1=Student("王大丫",42)
+    s2=Student("王二丫",32)
+    s1.PrintName()
+    s2.PrintNum()
+    Student.num=2
+    print(s1.num)
+    print(s2.num)
+    s1.num=3        #对象中的类变量被重新赋值
+    s2.num=4        #对象中的类变量被重新赋值
+    print(s1.num)
+    print(s2.num)
+
+    #运行结果
+    姓名：王大丫 年龄：42
+    姓名：王二丫 年龄：32 
+    2
+    2
+    3
+    4
+ ```
+
 
 
 # 未完待续。。。。。。
