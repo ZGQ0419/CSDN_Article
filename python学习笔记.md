@@ -9,11 +9,16 @@
 
 # 该不该学习Python（个人感受，纯属胡言论语）
 
-&emsp;&emsp;通过一周左右的学习，让我感受到了这门语言的一个最大特点：<font color=#0422ff size=5 face="黑体">流氓</font>，这是我目前能找到对它最好的修饰词了。但这绝对不是在贬低Python，反而是在赞扬它。作为一门前端语言，它集C、Java语言中的精华于一身。很好的发挥了前端语言<font color=#ff40 size=3 face="宋体">重视简洁高效，轻视执行速度</font>的特点，就像那句：人生苦短，我用Python！那么该不该学习Python呢？我的建议如下：
+&emsp;&emsp;通过一周左右的学习，让我感受到了这门语言的一个最大特点：<font color=#0422ff size=5 face="黑体">流氓</font>，这是我目前能找到对它最好的修饰词了。但这绝对不是在贬低Python，反而是在赞扬它。作为一门前端语言，它集C、Java语言中的精华于一身。很好的发挥了前端语言<font color=#ff00 size=3 face="宋体">重视简洁高效，轻视执行速度</font>的特点，就像那句：人生苦短，我用Python！那么该不该学习Python呢？我的建议如下：
 
- 1. 如果你只是<font color=#ff40 size=3 face="宋体">单纯的想搞事情</font>，想做出一个作品或者想完成某个项目，又或者对编程有兴趣想尝试，优先学习Python能够快速的达到你的目的。
+ 1. 如果你只是<font color=#ff00 size=3 face="宋体">单纯的想搞事情</font>，想做出一个作品或者想完成某个项目，又或者对编程有兴趣想尝试，优先学习Python能够快速的达到你的目的。
  
- 2. 如果你将来想<font color=#ff40 size=3 face="宋体">从事编程这类计算机的相关工作或者编程是你狂热的兴趣爱好</font>，学习C和C++将会使你的编程道路走的更深更远，算的上是IT必修课程之一，它能有效的帮助你了解和理解计算机软硬件的工作方式和软硬件是如何协同工作的，它们工作的思维方式是什么，让你更懂计算机的想法，也能帮助你更快的学习其他的编程语言，万变不离其宗，其中的道理自然可以互通，也为你的学习提供了实用高效的参照物。
+ 2. 如果你将来想<font color=#ff00 size=3 face="宋体">从事编程这类计算机的相关工作或者编程是你狂热的兴趣爱好</font>，学习C和C++将会使你的编程道路走的更深更远，算的上是IT必修课程之一，它能有效的帮助你了解和理解计算机软硬件的工作方式和软硬件是如何协同工作的，它们工作的思维方式是什么，让你更懂计算机的想法，也能帮助你更快的学习其他的编程语言，万变不离其宗，其中的道理自然可以互通，也为你的学习提供了实用高效的参照物。
+
+# <font color=#ff00 >了解：Python 的数据存储机制</font>
+
+&emsp;&emsp;每个编程语言都有其各自的存储机制，依个人愚见，学习任意一门语言，一定要了解其数据存储机制，学习Python也不例外。在学习Python时你会发现，它和C语言、Java在基础知识方面最大的不同就是python在使用变量时不用先声明再使用，而是想用某个变量时直接拿来用，这就决定了它的数据存储方式有些不同。对于python，一切变量都是对象，变量的存储采用C语言中指针的思路来进行设计，即变量存储的只是变量值的内存地址，而不是变量值本身。关于python数据储存的详细过程推荐这篇文章  [https://blog.csdn.net/u014665013/article/details/85787884](https://blog.csdn.net/u014665013/article/details/85787884)
+
 
 # 第一章 Python基础知识
 
@@ -34,7 +39,7 @@
 （3）复数（complex）   
 
 &emsp;&emsp;&emsp;表示方法：`a+bj`或`a+bJ`或`complex(a,b)`， Python解释器结果：`（a+bj）`
-<font color=#ff40 size=3 face="黑体">总结：Python数据类型是不允许改变的，如果改变，意味着将重新分配内存空间，也表明Python是强类型的动态脚本语言，关于语言类型的分类可以参考：</font>[传送门](https://blog.csdn.net/xhg_wandering_soul/article/details/80796192)
+<font color=#ff40 size=3 face="黑体">总结：Python数据类型是不允许改变的，如果改变，意味着将重新分配内存空间，也表明Python是强类型的动态脚本语言，关于语言类型的分类可以参考：</font> [https://blog.csdn.net/xhg_wandering_soul/article/details/80796192](https://blog.csdn.net/xhg_wandering_soul/article/details/80796192)
 
 <font color=#0422ff size=4 face="黑体">2、字符串</font>
 
@@ -472,46 +477,151 @@
 
 ### 1.2.4 实例属性与类属性（成员变量）
    
-&emsp;&emsp;属性又可以叫成员变量，其分为实例属性与类属性。简单说，实例属性就是在初始化时 `__init__()` 函数中定义的，定义与引用时都要在前加上对象名。而类属性就是在成员函数（方法）外定义的，使用时可以用对象名来引用或使用类名访问。<font color=#ff40 size=3 face="黑体"> 注意：如果实例对象中的类变量（程序中的num）没有重新赋值，则所有实例中的类变量共享同一值,但如果实例对象中的类变量被使用 `对象.类变量` 方式重新赋值，则各对象中的类变量（num）将新分配内存来存储，所以值将不同。</font>演示如下：
+&emsp;&emsp;属性又可以叫成员变量，其分为实例属性与类属性。简单说，实例属性就是在初始化时 `__init__()` 函数中定义的，定义与引用时都要在前加上对象名。而类属性就是在成员函数（方法）外定义的，使用时可以用对象名来引用或使用类名访问，例如：
+
+ ```python
+
+    class Student:
+            num = 1
+            def __init__(self,str, n):
+                     self.name = str
+                     self.age = n
+
+            def SayHello(self):
+                     print("Hello!")
+
+            def PrintName(self):
+                     print("姓名：", self.name ,"年龄：", self.age)
+
+            def PrintNum(self):
+                     print(Student.num)
+
+    # 主程序
+
+    s1 = Student("王大丫", 42)
+    s2 = Student("王二丫", 32)
+    s1.PrintName()
+    s2.PrintName()
+    s1.PrintNum()
+
+    #运行结果
+     姓名： 王大丫 年龄： 42
+    姓名： 王二丫 年龄： 32
+    1
+    1
+ ```
+
+&emsp;&emsp;<font color=#ff40 size=3 face="黑体"> 1：类变量的值在所有实例中共享，但如果类变量（程序中的num）在某实例对象中通过 `对象.类变量` 方式类似被“重新赋值”时，那么系统将重新为该实例对象分配另外的空间来存储新值，而类变量和其他实例调用类变量的值均不变。</font> 可以通过下面代码来验证：
 
 
   ```python
 
     class Student:
-        num=1;
-        def __init__(self,str,n):
-            self.name=str
-            self.age=n
-        def SayHello(self):
-            print("Hello!")
-        def PrintName(self):
-            print("姓名：",self.name",年龄：",self.age)
-        def PrintNum(self):
-            print(Person.num)
+    num = 1
 
-    #主程序
-    s1=Student("王大丫",42)
-    s2=Student("王二丫",32)
-    s1.PrintName()
-    s2.PrintNum()
-    Student.num=2
-    print(s1.num)
+    def __init__(self):
+        pass
+
+
+    # 主程序
+    s1 = Student()
+    s2 = Student()
+    print(s1.num)   
     print(s2.num)
-    s1.num=3        #对象中的类变量被重新赋值
-    s2.num=4        #对象中的类变量被重新赋值
+    s2.num = 2                  # 通过调用对象实例来“修改”类变量num的值
+    print(s2.num)
+    print(Student.num)
     print(s1.num)
+    print(id(Student.num))
+    print(id(s1.num))
+    print(id(s2.num))
+
+    #运行结果
+    1
+    1
+    2
+    1
+    1
+    490559760
+    490559760
+    490559776                  #  s2的num值修改后发现系统重新给其分配了新地址
+ ```
+
+&emsp;&emsp;<font color=#ff40 size=3 face="黑体"> 2：如果类变量与实例变量同名，则优先调用实例变量</font> 验证如下：
+
+  ```python
+
+    class Student:
+        num = 1
+
+        def __init__(self, str, n):
+            self.name = str
+            self.age = n
+            self.num = 90
+
+    # 主程序
+    
+    s1 = Student("王大丫", 42)
+    s2 = Student("王二丫", 32)
+    print(s1.num)
+    print(Student.num)                   #发现在类变量num值仍为1的前提下，优先使用实例变量
     print(s2.num)
 
     #运行结果
-    姓名：王大丫 年龄：42
-    姓名：王二丫 年龄：32 
-    2
-    2
-    3
-    4
+    90
+    1
+    90
  ```
 
+### 1.2.5 私有成员与共有成员
 
+&emsp;&emsp;Python无严格的私有变量保护机制，正常情况下，属性名定义时在前面加入`__`即表示私有变量（Java使用关键字 private 修饰私有变量），否则为共有变量。私有变量在类的外部不允许直接访问，想访问只有两招：其一是像Java一样通过调用共有成员方法来访问与修改。代码如下
+ 
+···python
+   
+     class Student:
+          num = 1
+          def __init__(self, a, b):
+                  self.age = a
+                  self.__score = b
+
+           def getScore(self):
+                  return self.__score
+
+     # 主程序
+     s1 = Student(18,100)
+     print(s1.getScore())
+
+     #输出结果
+     100
+
+···
+
+&emsp;&emsp;方法二则是使用python特殊方式进行私有变量访问
+ 
+ ```python
+
+    class Student:
+        num = 1
+
+        def __init__(self, str, n):
+            self.name = str
+            self.age = n
+            self.num = 90
+
+    # 主程序
+    
+    s1 = Student("王大丫", 42)
+    s2 = Student("王二丫", 32)
+    print(s1.num)
+    print(Student.num)                            #发现类变量num值仍为1
+    print(s2.num)
+
+    #运行结果
+    90
+    1
+    90
+ ```
 
 # 未完待续。。。。。。
 
