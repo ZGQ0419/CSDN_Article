@@ -721,10 +721,118 @@
  
 &emsp;&emsp;在继承父类时，有几个特点需要注意：
 
-**（1）**python在子类调用方法时，总是先在本类中查找方法，找不到时再去父类中找。 
+**（1）**python在子类调用方法时，总是先在本类中查找方法，找不到时再去父类中找。 如示例1；
 
-**（2）**在继承时，如果子类重写了父类的构造方法，那么父类的构造方法将不被调用，子类需要调用父类的构造方法进行初始化时需要使用 `super()` 来调用。 
+**（2）**在继承时，如果子类重写了父类的方法，那么父类的方法将不被调用，如果子类需要调用父类的方法，有两种方法。
 
-**（3）**如果想跳过子类重写父类的方法直接调用父类的方法，有两种方式：其一使用 `父类名.方法名（子类对象名,.......）`那么父类的构造方法将不被调用，子类需要调用父类的构造方法进行初始化时需要使用 `super()` 来调用。 
+&emsp;&emsp;**A:** 在子类方法中使用 `super()` 来调用。
+
+&emsp;&emsp;**B:** 在主程序中使用 `父类名称.父类方法（子类对象名）` 的方式调用。如示例2；
+
+
+示例1：
+
+```python
+
+    class Person():       
+        def __init__(self):
+            print("父类初始化方法")
+    
+        def Printf(self):
+            print("父类Printf方法!")
+
+        def Wiite(self):
+            print("父类Wiite方法！")
+
+    class Student(Person):
+        def __init__(self):
+            print("子类初始化方法")
+
+        def Printf(self):
+            print("子类Printf方法!")
+
+    # 主程序
+    s1 = Student()
+    s1.Printf()         #优先调用子类方法
+    s1.Wiite()          #在子类中找不到该方法时采用父类方法
+    
+    #结果
+    子类初始化方法
+    子类Printf方法!
+    父类Wiite方法！
+
+```
+
+示例2：
+
+```python
+    
+    #在子类方法中调用父类方法
+    class Person():
+        def __init__(self):
+            print("父类初始化方法")
+        
+        def Printf(self):
+            print("父类Printf方法!")
+
+    class Student(Person):
+        def __init__(self):
+            super().__init__()
+            print("子类初始化方法")
+        def Printf(self):
+            super().Printf()
+            print("子类Printf方法!")
+
+    # 主程序
+    s1 = Student()
+    s1.Printf()
+
+    #结果
+    父类初始化方法
+    子类初始化方法
+    父类Printf方法!
+    子类Printf方法!
+
+
+    或者
+
+    #在主程序中调用父类方法
+    class Person():
+         def __init__(self):
+               print("父类初始化方法")
+         def Printf(self):
+               print("父类Printf方法!")
+
+    class Student(Person):
+         def __init__(self):
+               print("子类初始化方法")
+         def Printf(self):
+               print("子类Printf方法!")
+
+    # 主程序
+    s1 = Student()
+    Person.__init__(s1)
+    Person.Printf(s1)
+    
+    #结果
+    子类初始化方法
+    父类初始化方法
+    父类Printf方法!
+
+```
+
+## 2.8 多态
+
+&emsp;&emsp;<font color=#ff00 size=3 face="黑体"> python中多态的含义和Java中多态类似，均依赖于继承，包括重载、重写（覆盖）、子父类数据类型的包括关系等。</font>例如：父类是人，子类有学生、教师、工人等等，学生对象的数据类型除了是学生外，同时也是父类人，学生也具有人的方法与属性。可以说学生有多种状态，就是所谓的多态。多态遵循软件设计中的“开闭原则”，即对扩展开放，对修改封闭。
+
+# 第三章 Python图形界面设计
+
+## 说明
+
+&emsp;&emsp;本章主要总结Python语言在window平台下通过导入Tkinter库进行窗口设计的一些常见函数的使用方法，不会包括全部的函数使用。与Python语法学习无关，所以如果时间紧迫，可以跳过阅读。
+
+## 3.1 创建window窗口
+
+
 # 未完待续。。。。。。
 
