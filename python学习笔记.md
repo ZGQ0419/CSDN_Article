@@ -15,16 +15,15 @@
  
  2. 如果你将来想<font color=#ff00 size=3 face="宋体">从事编程这类计算机的相关工作或者编程是你狂热的兴趣爱好</font>，学习C和C++将会使你的编程道路走的更深更远，算的上是IT必修课程之一，它能有效的帮助你了解和理解计算机软硬件的工作方式和软硬件是如何协同工作的，它们工作的思维方式是什么，让你更懂计算机的想法，也能帮助你更快的学习其他的编程语言，万变不离其宗，其中的道理自然可以互通，也为你的学习提供了实用高效的参照物。
 
-# <font color=#ff00 >了解：Python 的数据存储机制</font>
+# 基础知识：Python 的数据存储机制
 
 &emsp;&emsp;每个编程语言都有其各自的存储机制，依个人愚见，学习任意一门语言，一定要了解其数据存储机制，学习Python也不例外。在学习Python时你会发现，它和C语言、Java在基础知识方面最大的不同就是python在使用变量时不用先声明再使用，而是想用某个变量时直接拿来用，这就决定了它的数据存储方式有些不同。对于python，一切变量都是对象，变量的存储采用C语言中指针的思路来进行设计，即变量存储的只是变量值的内存地址，而不是变量值本身。关于python数据储存的详细过程推荐这篇文章  [https://blog.csdn.net/u014665013/article/details/85787884](https://blog.csdn.net/u014665013/article/details/85787884)
 
 
-# 第一章 Python基础知识
+# 第一章 Python基本语法
 
-## 1.1 Python基本语法
+## 1.1 Python 数据类型
 
-### 1.1.1  Python 数据类型
 
 <font color=#0422ff size=4 face="黑体">1、数值类型：</font>
 
@@ -39,7 +38,7 @@
 （3）复数（complex）   
 
 &emsp;&emsp;&emsp;表示方法：`a+bj`或`a+bJ`或`complex(a,b)`， Python解释器结果：`（a+bj）`
-<font color=#ff40 size=3 face="黑体">总结：Python数据类型是不允许改变的，如果改变，意味着将重新分配内存空间，也表明Python是强类型的动态脚本语言，关于语言类型的分类可以参考：</font> [https://blog.csdn.net/xhg_wandering_soul/article/details/80796192](https://blog.csdn.net/xhg_wandering_soul/article/details/80796192)
+<font color=#ff00 size=3 face="黑体">总结：Python数据类型是不允许改变的，如果改变，意味着将重新分配内存空间，也表明Python是强类型的动态脚本语言，关于语言类型的分类可以参考：</font> [https://blog.csdn.net/xhg_wandering_soul/article/details/80796192](https://blog.csdn.net/xhg_wandering_soul/article/details/80796192)
 
 <font color=#0422ff size=4 face="黑体">2、字符串</font>
 
@@ -59,7 +58,7 @@
 
 &emsp;&emsp;使用None表示，不支持任何运算，未指定返回值的函数自动返回None。和C语言、Java一致。
 
-### 1.1.2  Python 序列数据结构
+## 1.2  Python 序列数据结构
 
 <font color=#0422ff size=4 face="黑体">1、列表（List） ——元素可变</font>
 
@@ -143,7 +142,7 @@
     
 **(1）创建**：由键值对（key => value）组成，用花括号{}表示。eg: dict1={key1:1,key2: 2} 
 
- &emsp;&emsp; <font color=#ff40 size=3 face="黑体">注：key必须唯一不唯一时后者的value覆盖前者的value，value不必。Key不可修改，所以只能用数字、字符串、元组表示；而value可以修改，可以使用任何数据类型。创建空字典：dict1={}</font>
+ &emsp;&emsp; <font color=#ff00 size=3 face="黑体">注：key必须唯一不唯一时后者的value覆盖前者的value，value不必。Key不可修改，所以只能用数字、字符串、元组表示；而value可以修改，可以使用任何数据类型。创建空字典：dict1={}</font>
 
 **(2)访问（查询）**：
 
@@ -186,11 +185,11 @@
 
 &emsp;&emsp;   D：异或：’^’
 
-### 1.1.3  Python 控制语句
+## 1.3  Python 控制语句
 
-<font color=#ff40 size=3 face="黑体">（1）、Python使用’#’做注释符,和C、Java的’/’用法相同，但python没有多行注释符，只能用多行#代替</font>
+<font color=#ff00 size=3 face="黑体">（1）、Python使用’#’做注释符,和C、Java的’/’用法相同，但python没有多行注释符，只能用多行#代替</font>
 
-<font color=#ff40 size=3 face="黑体">（2）、Python不用大括号、begin等符号区分代码块，而是使用缩进来区分，换行使用’\’。</font>
+<font color=#ff00 size=3 face="黑体">（2）、Python不用大括号、begin等符号区分代码块，而是使用缩进来区分，换行使用’\’。</font>
 
 <font color=#0422ff size=4 face="黑体">   1、选择结构 </font>
 
@@ -226,7 +225,7 @@
 
 &emsp;&emsp; C：continue与break：使用方法和C、Java相同
 
-### 1.1.4  Python 函数与模块
+## 1.4  Python 函数与模块
 
 <font color=#0422ff size=4 face="黑体">   1、函数的定义 </font>
 
@@ -274,7 +273,7 @@
 
 ```
 
-<font color=#ff40 size=3 face="黑体">注意： 外层调用内层函数时需要返回函数对象，所以不需要加括号</font>
+<font color=#ff00 size=3 face="黑体">注意： 外层调用内层函数时需要返回函数对象，所以不需要加括号</font>
 
 **（2）调用**：
 
@@ -288,7 +287,7 @@
 
 <font color=#0422ff size=4 face="黑体">   4、函数递归调用 </font>
 
-&emsp;&emsp;<font color=#ff40 size=3 face="黑体">和C语言一致，eg:</font>
+&emsp;&emsp;<font color=#ff00 size=3 face="黑体">和C语言一致，eg:</font>
 
 ```python
 
@@ -306,7 +305,7 @@
 
 <font color=#0422ff size=4 face="黑体">   5、模块（Java中的包） </font>
 
-&emsp;&emsp;模块就是一个保存python代码的文件，在python中使用import来引入模块。<font color=#ff40 size=3 face="黑体">和Java的包一致，可以认为python的模块就是Java的包，就像C语言的函数和Java的方法一样</font>
+&emsp;&emsp;模块就是一个保存python代码的文件，在python中使用import来引入模块。<font color=#ff00 size=3 face="黑体">和Java的包一致，可以认为python的模块就是Java的包，就像C语言的函数和Java的方法一样</font>
 
 **（1）导入模块**：
 
@@ -327,7 +326,7 @@
 
 ```
 
-&emsp;&emsp; <font color=#ff40 size=3 face="黑体">注意：上面两种方法覆盖范围均为整个模块，但使用方法不同；使用 ` import  [模块名]` 导入的模块调用方法为： `math.[函数名]` 使用 `from [模块名] import*` 导入的模块调用方法可以直接使用函数名。</font>
+&emsp;&emsp; <font color=#ff00 size=3 face="黑体">注意：上面两种方法覆盖范围均为整个模块，但使用方法不同；使用 ` import  [模块名]` 导入的模块调用方法为： `math.[函数名]` 使用 `from [模块名] import*` 导入的模块调用方法可以直接使用函数名。</font>
 
 &emsp;&emsp;**方法二**：调用某个模块下的某一个或几个函数时，使用 “ from [模块名] import [函数名1]，[函数名2].......” 
 
@@ -342,20 +341,20 @@
 
 ```
 
-&emsp;&emsp; <font color=#ff40 size=3 face="黑体">此外，如果使用 `from [模块名] import*` 或 `from [模块名] import  [函数名]` 方法导入模块时，在函数内部重新定义相同的[函数名]，则自动屏蔽导入的函数，而使用自身定义的函数。另外python使用 `from [模块名] import [函数名] ` 来代替了Java的 ` import [模块名].[函数名]` 的导入方式</font>
+&emsp;&emsp; <font color=#ff00 size=3 face="黑体">此外，如果使用 `from [模块名] import*` 或 `from [模块名] import  [函数名]` 方法导入模块时，在函数内部重新定义相同的[函数名]，则自动屏蔽导入的函数，而使用自身定义的函数。另外python使用 `from [模块名] import [函数名] ` 来代替了Java的 ` import [模块名].[函数名]` 的导入方式</font>
 
 **（2）定义自己的模块**：
 
 
 &emsp;&emsp;  python中每一个 .py 文件都可以作为一个模块使用，文件名就是模块名；直接使用上述方法导入即可，甚是”流氓“。
 
-## 1.2 Python面向对象
+# 第二章 Python面向对象
 
-### 说明
+## 说明
 
-&emsp;&emsp;<font color=#ff40 size=3 face="黑体">面向对象的程序设计部分，程序逻辑与思想与Java极其相似，均使用类与对象的思想。包括继承、封装、多态等。</font>
+&emsp;&emsp;<font color=#ff00 size=3 face="黑体">面向对象的程序设计部分，程序逻辑与思想与Java极其相似，均使用类与对象的思想。包括继承、封装、多态等。</font>
 
-### 1.2.1 定义和使用类
+## 2.1 定义和使用类
 
 <font color=#0422ff size=4 face="黑体">   1、类的定义 </font>
 
@@ -367,7 +366,7 @@
 
  ```
 
-<font color=#ff40 size=3 face="黑体">  Python </font>中类的定义是:
+<font color=#ff00 size=3 face="黑体">  Python </font>中类的定义是:
 
   ```python
  
@@ -378,7 +377,7 @@
 
  ```
 
- <font color=#ff40 size=3 face="黑体">  Java </font>中类的定义是:
+ <font color=#ff00 size=3 face="黑体">  Java </font>中类的定义是:
 
   ```java
  
@@ -391,16 +390,16 @@
 
  ```
 
-&emsp;&emsp;<font color=#ff40 size=3 face="黑体">  类的方法与普通的函数只有一个特别的区别——它必须有一个额外的第一个参数名称，但是在调用这个方法的时候你不必为这个参数赋值，Python会提供这个值。这个特别的变量指对象本身，按照惯例它的名称是self，也可以用任何变量名称代替，python调用方法时会自动跳过第一个变量，从第二个赋值，但最好使用self。</font>
+&emsp;&emsp;<font color=#ff00 size=3 face="黑体">  类的方法与普通的函数只有一个特别的区别——它必须有一个额外的第一个参数名称，但是在调用这个方法的时候你不必为这个参数赋值，Python会提供这个值。这个特别的变量指对象本身，按照惯例它的名称是self，也可以用任何变量名称代替，python调用方法时会自动跳过第一个变量，从第二个赋值，但最好使用self。</font>
 
-&emsp;&emsp;<font color=#ff40 size=3 face="黑体"> 简单说，python中的self和Java的this一样，代表类的实例，而非类。更多关于self的详细的说明请参考</font>[https://blog.csdn.net/daocaoren1543169565/article/details/80626035](https://blog.csdn.net/daocaoren1543169565/article/details/80626035)
+&emsp;&emsp;<font color=#ff00 size=3 face="黑体"> 简单说，python中的self和Java的this一样，代表类的实例，而非类。更多关于self的详细的说明请参考</font>[https://blog.csdn.net/daocaoren1543169565/article/details/80626035](https://blog.csdn.net/daocaoren1543169565/article/details/80626035)
 
 <font color=#0422ff size=4 face="黑体">   2、类的使用 </font>
 
 
 &emsp;&emsp;类的使用和Java也类似，都是以创建对象的思想来使用，类是对象的模板。调用（创建对象）方法为：
 
-<font color=#ff40 size=3 face="黑体">  Python </font>实例化对象：
+<font color=#ff00 size=3 face="黑体">  Python </font>实例化对象：
 
   ```python
  
@@ -412,7 +411,7 @@
 
  ```
 
-而<font color=#ff40 size=3 face="黑体">  Java </font>实例化对象：
+而<font color=#ff00 size=3 face="黑体">  Java </font>实例化对象：
 
   ```java
  
@@ -424,9 +423,9 @@
 
 
 
-### 1.2.2 构造函数
+## 2.2 构造函数
 
-&emsp;&emsp;python和Java一样都具有构造函数，都是用来在对象实例化时对参数进行初始化操作。如果用户未涉及构造函数，则会提供一个默认的构造函数。在Python中使用<font color=#ff40 size=3 face="黑体">  固定的形式表示构造方法 </font>，如下：
+&emsp;&emsp;python和Java一样都具有构造函数，都是用来在对象实例化时对参数进行初始化操作。如果用户未涉及构造函数，则会提供一个默认的构造函数。在Python中使用<font color=#ff00 size=3 face="黑体">  固定的形式表示构造方法 </font>，如下：
 
   ```python
  
@@ -449,10 +448,10 @@
 
  ```
 
-&emsp;&emsp;<font color=#ff40 size=3 face="黑体"> 注意：一个class只能有一个用于构造对象的`__init__`函数，但python中的变量是无类型的,因此传给`__init__`的参数可以是任何类型。所以可以代替Java中重载和多态的思想</font>
+&emsp;&emsp;<font color=#ff00 size=3 face="黑体"> 注意：一个class只能有一个用于构造对象的`__init__`函数，但python中的变量是无类型的,因此传给`__init__`的参数可以是任何类型。所以可以代替Java中重载和多态的思想</font>
 
 
-### 1.2.3 析构函数
+## 2.3 析构函数
    
 &emsp;&emsp;Java自动进行内存回收。python也默认提供函数进行回收内存。此外python还提供一个内存回收函数（`__del__()`）。当使用del 删除对象时，系统自动调用 `__del__()` 析构函数进行内存释放，另外当对象在某个作用域中调用完毕，在跳出其作用域的同时析构函数也会被调用一次，这样可以用来释放内存空间。析构函数的演示调用如下：
 
@@ -475,7 +474,7 @@
 
  ```
 
-### 1.2.4 实例属性与类属性（成员变量）
+## 2.4 实例属性与类属性（成员变量）
    
 &emsp;&emsp;属性又可以叫成员变量，其分为实例属性与类属性。简单说，实例属性就是在初始化时 `__init__()` 函数中定义的，定义与引用时都要在前加上对象名。而类属性就是在成员函数（方法）外定义的，使用时可以用对象名来引用或使用类名访问，例如：
 
@@ -511,7 +510,7 @@
     1
  ```
 
-&emsp;&emsp;<font color=#ff40 size=3 face="黑体"> 1：类变量的值在所有实例中共享，但如果类变量（程序中的num）在某实例对象中通过 `对象.类变量` 方式类似被“重新赋值”时，那么系统将重新为该实例对象分配另外的空间来存储新值，而类变量和其他实例调用类变量的值均不变。</font> 可以通过下面代码来验证：
+&emsp;&emsp;<font color=#ff00 size=3 face="黑体"> 1：类变量的值在所有实例中共享，但如果类变量（程序中的num）在某实例对象中通过 `对象.类变量` 方式类似被“重新赋值”时，那么系统将重新为该实例对象分配另外的空间来存储新值，而类变量和其他实例调用类变量的值均不变。</font> 可以通过下面代码来验证：
 
 
   ```python
@@ -547,7 +546,7 @@
     490559776                  #  s2的num值修改后发现系统重新给其分配了新地址
  ```
 
-&emsp;&emsp;<font color=#ff40 size=3 face="黑体"> 2：如果类变量与实例变量同名，则优先调用实例变量</font> 验证如下：
+&emsp;&emsp;<font color=#ff00 size=3 face="黑体"> 2：如果类变量与实例变量同名，则优先调用实例变量</font> 验证如下：
 
   ```python
 
@@ -573,11 +572,11 @@
     90
  ```
 
-### 1.2.5 私有成员与共有成员
+## 2.5 私有成员与共有成员
 
 &emsp;&emsp;Python无严格的私有变量保护机制，正常情况下，属性名定义时在前面加入`__`即表示私有变量（Java使用关键字 private 修饰私有变量），否则为共有变量。私有变量在类的外部不允许直接访问，想访问只有两招：其一是像Java一样通过调用共有成员方法来访问与修改。代码如下
  
-···python
+```python
    
      class Student:
           num = 1
@@ -595,33 +594,137 @@
      #输出结果
      100
 
-···
+```
 
-&emsp;&emsp;方法二则是使用python特殊方式进行私有变量访问
+&emsp;&emsp;方法二则是使用python特殊方式进行私有变量访问，即通过：`对象名._类名+私有成员`的方式进行访问。示例如下：
  
  ```python
 
     class Student:
-        num = 1
+    num = 1
 
-        def __init__(self, str, n):
-            self.name = str
-            self.age = n
-            self.num = 90
+        def __init__(self, a, b):
+            self.age = a
+            self.__score = b
 
     # 主程序
-    
-    s1 = Student("王大丫", 42)
-    s2 = Student("王二丫", 32)
-    print(s1.num)
-    print(Student.num)                            #发现类变量num值仍为1
-    print(s2.num)
+
+
+    s1 = Student(18,100)
+    print(s1._Student__score)                #通过特殊方法调用私有成员
 
     #运行结果
-    90
-    1
-    90
+    100
+
  ```
 
+## 2.6 公有方法、私有方法、静态方法
+
+<font color=#0422ff size=4 face="黑体">   1、公有方法 </font>
+
+&emsp;&emsp;公有方法与私有方法都属于对象，日常使用的最常见的绝大部分方法都是公有方法，通过 `def  方法名（self,......）` 定义。
+
+&emsp;&emsp;公有方法的调用有两种方法，其一为使用对象名调用： `对象名.方法名（........）` ；其二为使用类名调用，但必须显式把对象名传给“self” 参数来指明访问的对象： `类名.函数名（对象1, ......）`。示例如下：
+
+```python
+
+    class Student:
+    num = 1
+
+    def Printf(self, tag):
+            if tag == 1:
+                print("我是通过对象名调用输出的")
+            else:
+                print("我是通过类名调用输出的")
+
+    # 主程序
+    s1 = Student()
+    s1.Printf(1)                     #我是通过对象名调用输出的
+    Student.Printf(s1, 0)            #我是通过类名调用输出的
+    
+    #结果
+    我是通过对象名调用输出的
+    我是通过类名调用输出的
+
+```
+
+<font color=#0422ff size=4 face="黑体">   2、私有方法 </font>
+
+&emsp;&emsp;私有方法只允许本类进行访问，外部类与子类均不能访问。因此不允许对象直接使用 `对象名.方法名（）` 直接调用，只能在内部使用 `self.方法名（）`方式使用。示例：
+
+```python 
+
+    class Student:
+    num = 1
+
+    def __Printf(self):
+                print("我是在私有方法中输出的")
+
+    def Wprintf(self):
+        self.__Printf()              #使用self方法调用私有方法
+
+    # 主程序
+    s1 = Student()
+    s1.Wprintf()
+    
+    #结果
+    我是在私有方法中输出的
+
+```
+
+<font color=#0422ff size=4 face="黑体">   3、静态方法 </font>
+
+&emsp;&emsp;静态方法的意义和Java类似，都是用来处理类中的逻辑判断或者运算，只能访问类成员，不能访问对象（实例）成员。所以在定义静态方法时不需要传入 “self” 参数，而且需要在定义前加 `@ staticmethod` 声明静态方法，两种调用方法均可以。示例如下：
+
+```python
+
+    class Student:
+    num = 1
+    def __init__(self):
+        self.age = 20
+        self.score = 100
+    @ staticmethod                     #静态方法声明
+    def Wprintf(tag):                  #此处不需要传入self参数
+        # print(Student.score)     此处如果这样写会报错，因为变量score为实例成员，无法访问
+        if tag == 1:
+            print(Student.num)
+            print("通过对象调用")
+        else:
+            print(Student.num)
+            print("通过类名称调用" )
+
+    # 主程序
+    s1 = Student()
+    s1.Wprintf(1)              #通过对象调用
+    Student.Wprintf(0)         #通过类名调用
+
+    #结果
+    1
+    通过对象调用
+    1
+    通过类名称调用
+
+
+
+```
+
+## 2.7 类的继承
+
+&emsp;&emsp;类的继承这部分思想与Java相同，只是表达方式不大相同而已。既然存在继承，就会有父类（基类）和子类（派生类）。<font color=#ff00 size=3 face="黑体"> 子类可以继承父类的公有成员，但不能继承私有成员。</font>类继承的语法为：
+
+```python
+
+    class 子类名称(父类名称):
+        子类成员......
+
+```
+ 
+&emsp;&emsp;在继承父类时，有几个特点需要注意：
+
+**（1）**python在子类调用方法时，总是先在本类中查找方法，找不到时再去父类中找。 
+
+**（2）**在继承时，如果子类重写了父类的构造方法，那么父类的构造方法将不被调用，子类需要调用父类的构造方法进行初始化时需要使用 `super()` 来调用。 
+
+**（3）**如果想跳过子类重写父类的方法直接调用父类的方法，有两种方式：其一使用 `父类名.方法名（子类对象名,.......）`那么父类的构造方法将不被调用，子类需要调用父类的构造方法进行初始化时需要使用 `super()` 来调用。 
 # 未完待续。。。。。。
 
