@@ -797,5 +797,6 @@
 &emsp;&emsp;grid采用<font color=#ff00 size=3 face="黑体">表格</font>的方式组织组件；grid位置布局根据<font color=#ff00 size=3 face="黑体">子组件的行/列单元格确定。</font>子组件可以跨多行/列，在每一列中，列宽由这一列中最宽的单元各确定；grid管理器被广泛应用。类似于Android开发中的<font color=#ff00 size=3 face="黑体">相对布局</font>
 
 <font color=#0422ff size=4 face="黑体">   3、palce布局管理器 </font>
+
 # 未完待续。。。。。。
 
