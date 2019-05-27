@@ -794,9 +794,69 @@
 
 <font color=#0422ff size=4 face="黑体">   2、grid布局管理器 </font>
 
-&emsp;&emsp;grid采用<font color=#ff00 size=3 face="黑体">表格</font>的方式组织组件；grid位置布局根据<font color=#ff00 size=3 face="黑体">子组件的行/列单元格确定。</font>子组件可以跨多行/列，在每一列中，列宽由这一列中最宽的单元各确定；grid管理器被广泛应用。类似于Android开发中的<font color=#ff00 size=3 face="黑体">相对布局</font>
+&emsp;&emsp;grid采用<font color=#ff00 size=3 face="黑体">表格</font>的方式组织组件；grid位置布局根据<font color=#ff00 size=3 face="黑体">子组件的行/列单元格确定。</font>子组件可以跨多行/列，在每一列中，列宽由这一列中最宽的单元各确定；grid管理器被广泛应用。类似于Android开发中的<font color=#ff00 size=3 face="黑体">相对布局</font>，示例如下：
+
+```python 
+    from tkinter import*
+    root=Tk()
+    Button(root,text="1").grid(row=0,column=0)
+    Button(root,text="2").grid(row=0,column=1)
+    Button(root,text="3").grid(row=0,column=2)
+    Button(root,text="4").grid(row=1,column=0)
+    Button(root,text="5").grid(row=1,column=1)
+    Button(root,text="6").grid(row=1,column=2)
+    Button(root,text="7").grid(row=2,column=0)
+    Button(root,text="8").grid(row=2,column=1)
+    Button(root,text="9").grid(row=2,column=2)
+    Button(root,text="0").grid(row=3,column=0,columnspan=2,sticky=E+W)
+    Button(root,text=".").grid(row=3,column=2,sticky=E+W)
+    root.mainloop()
+```
 
 <font color=#0422ff size=4 face="黑体">   3、palce布局管理器 </font>
+
+&emsp;&emsp;place几何布局管理器允许指定组件的大小和位置。place的优点是可以控制精确控制组件的位置，不足之处是改变窗口的大小时，子组件不能在其父组件随之灵活改变大小。示例如下：
+
+```python
+    from tkinter import*
+    root=Tk()
+    root.title("place界面布局管理器")
+    root['width']=300;root['height']=300
+    Label(root,text="用户名",width=6).place(x=1,y=1)
+    Entry(root,width=20).place(x=45,y=1)
+    Label(root,text="密  码",width=6).place(x=1,y=20)
+    Entry(root,width=20,show="*").place(x=45,y=20)
+    Button(root,text="登录",width=8).place(x=40,y=40)
+    Button(root,text="取消",width=8).place(x=110,y=40)
+    root.mainloop()
+```
+
+## 3.3 Tkinter组件
+
+&emsp;&emsp;有些界面设计经验的编程人员大致都很了解界面控件有哪些了，Tkinter提供的控件也大致相同，简单的控件如下：
+
+| 控件  | 描述    | 
+| :-:  | :-|
+| Button | 按钮控件，在程序中显示按钮    |  
+| Canvas  | 画布控件，显示图形元素，例如线条或文本|  
+| Checkbutton | 多选框控件，用作提供多项选择框 |  
+|Entry|输入控件，用于输入文本信息|
+|Frame|框架控件，在屏幕上显示一个矩形区域，用来作为容器|
+|Label|标签控件，用来显示文本或位图|
+|Listbox|列表框控件，用来显示一个字符串列表给用户|
+|Menubutton|菜单按钮控件，用于显示菜单项|
+|Menu|菜单控件，显示菜单栏，下拉菜单和弹出菜单|
+|Message|消息控件，用来显示多行文本，于Label类似|
+|Radiobutton|单选按钮控件，显示菜单栏，下拉菜单与弹出菜单|
+|Scale|范围控件，显示一个单选的按钮状态|
+|Scrollbar|滚动条控件，在内容超过可视化区域时使用，例如列表框|
+|Text|文本控件，用于显示多行文本|
+|Toplevel|容器控件，用来提供一个单独的对话框，和Frame比较类似|
+|Spinbox|输入控件，与 Entry类似，但是可以指定输入范围值|
+|PanedWindow|PanedWindow是一个简单的容器控件，常用于复杂的窗口布局|
+|LabelFrame|LabelFrame是一个简单容器控件，常用于复杂窗口布局|
+|tkMessageBox|用于显示应用程序的消息框|
+
 
 # 未完待续。。。。。。
 
