@@ -731,9 +731,7 @@
 
 **（2）wxPython**：wxPython是Python语言的一套优秀的GUI图形库，允许Python程序员很方便的创建完整的、功能健全的GUI用户界面。 wxPython是作为优秀的跨平台GUI库wxWidgets的Python封装和Python模块的方式提供给用户的。
 
-**（3）Jython**：Jython是一种完整的语言，而不是一个Java翻译器或仅仅是一个Python编译器，它是一个Python语言在Java中的完全实现。Jython也有很多从CPython中继承的模块库。最有趣的事情是Jython不像CPython或其他任何高级语言，它提供了对其实现语言的一切存取。所以Jython不仅给你提供了Python的库，同时也提供了所有的Java类。这使其有一个巨大的资源库
-
-<font color=#ff00 size=3 face="黑体">如果想全面的了解和学习使用Tk模块进行界面编程部分设计，此处推荐一位大神的博客：</font>    [https://blog.csdn.net/yingshukun/article/details/53985080](https://blog.csdn.net/yingshukun/article/details/53985080)
+**（3）Jython**：Jython是一种完整的语言，而不是一个Java翻译器或仅仅是一个Python编译器，它是一个Python语言在Java中的完全实现。Jython也有很多从CPython中继承的模块库。最有趣的事情是Jython不像CPython或其他任何高级语言，它提供了对其实现语言的一切存取。所以Jython不仅给你提供了Python的库，同时也提供了所有的Java类。这使其有一个巨大的资源库<font color=#ff00 size=3 face="黑体">如果想全面的了解和学习使用Tk模块进行界面编程部分设计，此处推荐一位大神的博客：</font>    [https://blog.csdn.net/yingshukun/article/details/53985080](https://blog.csdn.net/yingshukun/article/details/53985080)。
 
 ## 3.1 创建window窗口
 
@@ -754,7 +752,7 @@
 
 ## 3.2 几何布局管理器
 
-&emsp;&emsp;何为几何布局管理器？简单来说就是对各种组件（如Button、Text、Label等）在页面上显示的位置，宽高等属性进行控制管理。Tkinter提供了3种风格不同的管理器：<font color=#ff00 size=4 face="黑体">pack、grid、place</font> 
+&emsp;&emsp;何为几何布局管理器？简单来说就是对各种组件（如Button、Text、Label等）在页面上显示的位置，宽高等属性进行控制管理。Tkinter提供了3种风格不同的管理器：<font color=#ff00 size=4 face="黑体">pack、grid、place。</font> 
 
 <font color=#0422ff size=4 face="黑体">   1、pack布局管理器 </font>
 
