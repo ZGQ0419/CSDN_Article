@@ -855,6 +855,48 @@
 |LabelFrame|LabelFrame是一个简单容器控件，常用于复杂窗口布局|
 |tkMessageBox|用于显示应用程序的消息框|
 
+&emsp;&emsp;以上所有组件都包括一些共同的属性，如字体大小、颜色等，如下表所示
+
+| 属性 | 描述 |
+| -|-|
+|dimension| 控件大小|
+|color|控件颜色|
+|font|控件字体|
+|anchor|锚点（内容停靠位置），对应东、西、南、北四个点|
+|relief|控件样式|
+|bitmap|位图，内置位图包括 error、gray75、gray50、gray25、gray12、ginfo、questhead、hourglass、question和warning，自定义位图为.xbm格式的文件|
+|cursor|光标|
+|text|显示文本内容|
+|state|设置组件状态为正常（NORMAL）、激活（ACTIVE）、禁用（DISABLED）|
+
+&emsp;&emsp;设置组件的属性代码方式有三种，如示例所示：
+
+```python
+    from tkinter import*
+    root=Tk()
+    root.title("组件属性设置方式")
+    root['width']=300;root['height']=300
+    #方式一
+    button1=Button(root,text="方式一")
+    button1.grid()
+    #方式二
+    button2=Button(root)
+    button2.config(text="方式二")
+    button2.grid()
+    #方式三
+    button3=Button(root)
+    button3["text"]="方式三"
+    button3.grid()
+    root.mainloop()
+```
+
+## 3.4 Tkinter字体
+
+
+## 3.5 Python事件处理
+
+# 第四章 Python文件的使用
+
 
 # 未完待续。。。。。。
 
