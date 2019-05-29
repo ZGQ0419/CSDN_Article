@@ -890,8 +890,41 @@
     root.mainloop()
 ```
 
+&emsp;&emsp;每一种控件的具体的使用方法和python语法无关，这里就不详细的介绍了，该部分可以在网上查找相关的资料自行学习。
+
 ## 3.4 Tkinter字体
 
+<font color=#0422ff size=4 face="黑体">   1、通过元组表示字体 </font>
+
+&emsp;&emsp;使用 `("字体名","字体大小","其他样式修饰")` 元组来修饰,放在 `font` 属性里；示例如下：
+
+```python
+    from tkinter import*
+    root=Tk()
+    root.title("通过元组表示字体！")
+    root.geometry("800x400")
+    # Label显示
+    label=Label(root, text="标签", font=("Arial","27","italic"))
+    label.pack()
+    root.mainloop()
+```
+
+<font color=#0422ff size=4 face="黑体">   2、通过Font对象表示字体 </font>
+
+&emsp;&emsp;直接上示例：
+
+```python
+    from tkinter import*
+    import tkinter.font
+    root=Tk()
+    root.title("通过Font对象表示字体！")
+    root.geometry("800x400")
+    # Label显示
+    ft=tkinter.font.Font(family="Arial",size=19)
+    label=Label(root, text="标签", font=ft)
+    label.pack()
+    root.mainloop()
+```
 
 ## 3.5 Python事件处理
 
