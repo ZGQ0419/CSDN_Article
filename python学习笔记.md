@@ -858,7 +858,7 @@
 &emsp;&emsp;以上所有组件都包括一些共同的属性，如字体大小、颜色等，如下表所示
 
 | 属性 | 描述 |
-| -|-|
+| :-:|-|
 |dimension| 控件大小|
 |color|控件颜色|
 |font|控件字体|
@@ -928,9 +928,119 @@
 
 ## 3.5 Python事件处理
 
+<font color=#0422ff size=4 face="黑体">1、事件类型</font>
+
+&emsp;&emsp;事件通用定义格式： `<modifier-detial>`。其中 `modifier` 定义的是按键类型，其包括键盘、鼠标、窗体等设备， `detial` 用于明确定义哪一个键或按钮的行为。示例如下：
+
+
+```python
+	<Button-1>  				#按下鼠标左键
+	<KeyPress-A>  			  #按下键盘上的A键
+	<Control-Shift-KeyPress-A>  #同时按下Control、Shift、KeyPress-A三个键
+```
+
+&emsp;&emsp;键盘事件如下：
+
+|名称|描述|
+|:-:|-|
+|KeyPress|按下键盘时触发，可以在detial中指明是哪个键|
+|KeyRelease|释放键盘上的某键时触发，可以在detial中指明是哪个键|
+
+
+&emsp;&emsp;鼠标事件如下：
+
+|名称|描述|
+|:-:|-|
+|ButtonPress或button|按下鼠标某键时触发，可以在detial中指明是哪个键|
+|ButtonRelease|释放鼠标某键时触发，可以在detial中指明是哪个键|
+|Motion|点中组件的同时托拽组件移动时触发|
+|Enter|当鼠标指针移进组件时触发|
+|Leave|当鼠标指针移出组件时触发|
+|MouseWheel|当鼠标滚轮滚动时触发|
+
+
+
+
+&emsp;&emsp;窗体事件如下：
+
+|名称|描述|
+|:-:|-|
+|Visibility|当组件变为可视时触发|
+|Unmap|当组件由显示状态变为隐藏状态时触发|
+|Map|当组件由隐藏状态变为显示状态时触发|
+|Expose|当组件从原本被其他组件遮盖的状态中暴露出来时触发|
+|FocusIn|当组件获得焦点时触发|
+|FocusOut|当组件失去焦点时触发|
+|Configure|当改变组件大小时触发，例如拖拽窗体边缘|
+|Property|当窗体的属性被删除或改变时触发，属于TK的核心事件|
+|Destroy|当组件被销毁时触发|
+|Activate|与组件选项中的state项有关，表示组件由不可用转为可用，例如按钮由disabled（灰色）转为enabled|
+|Deactivate|与组件选项中的state项有关，表示组件由可用转为不可用，例如按钮由enabled转为disabled（灰色）|
+
+
+<font color=#0422ff size=4 face="黑体">2、事件绑定 </font>
+
+&emsp;&emsp;事件绑定有三种方法，分为创建组件对象时指定、实力绑定、标识绑定。
+
+1、创建组件对象时指定：
+
+```python
+	def callback():
+		showinfo("人生苦短，我用Python!")
+	button=Button(root,text="设置command",command=callback)
+	button.pack()
+```
+
+2、实例绑定：
+&emsp;&emsp;使用bind()函数来指定组件绑定事件。
+
+```python
+	组件对象.bind("<事件类型>",事件处理函数)
+```
+
+例如：
+
+```python
+	button.bind("<Button-1>",callback)
+```
+
+3、标识绑定：
+
+```python
+	组件对象.tag_bind("r1","<Button-1>",callback)
+```
+
+<font color=#0422ff size=4 face="黑体">3、事件处理函数 </font>
+
+1、定义事件处理函数
+
+事件处理函数通过传递event参数进行信息交互，Event对象的参数如下：
+
+|参数|说明|
+|:-:|-|
+|.x/.y|鼠标相对于组件左上角的坐标|
+|.x_root/.y_root|鼠标相对于屏幕左上角的坐标|
+|.keycode|键码，但他不能反应事件前缀Alt,Control,Shift,Lock,并且它不区分大小写按键，即输入a与A是相同的键码。|
+|.char|字符|
+|.type|事件类型|
+|.widget|触发的组件|
+
 # 第四章 Python文件的使用
 
- 
-zzz
+&emsp;&emsp;Python中对文件的操作通常按照以下三个步骤进行：
+（1）使用open()函数打开（或建立）文件，返回一个file对象
+（2）使用file对象的读写方法对文件进行读写操作。其中将数据从外存传输到内存的过程称为读操作，将数据从内存传输到外存的过程称为写操作。
+（3）使用file对象的close()方法关闭文件
+
+## 打开/建立文件
+
+
+
+```python
+	#file对象=open("文件路径"，"mode模式")
+	filetop=open("D:\python\text.txt","r")
+```
+
+
 # 未完待续。。。。。。
 
