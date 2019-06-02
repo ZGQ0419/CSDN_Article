@@ -1028,18 +1028,22 @@
 # 第四章 Python文件的使用
 
 &emsp;&emsp;Python中对文件的操作通常按照以三个步骤进行，和C语言、Java使用方法类似：
-（1）使用open()函数打开（或建立）文件，返回一个file对象
-（2）使用file对象的读写方法对文件进行读写操作。其中将数据从外存传输到内存的过程称为读操作，将数据从内存传输到外存的过程称为写操作。
-（3）使用file对象的close()方法关闭文件
+**（1）**使用open()函数打开（或建立）文件，返回一个file对象
+**（2）**使用file对象的读写方法对文件进行读写操作。其中将数据从外存传输到内存的过程称为读操作，将数据从内存传输到外存的过程称为写操作。
+**（3）**使用file对象的close()方法关闭文件
 
-## 打开/建立文件
+## 4.1 打开/建立文件
 
 
-&emsp;&emsp;调用方法为：
+&emsp;&emsp;打开文件的方法主要使用 `open（）` 函数: `file对象=open("文件路径"，"mode模式"，buffering)`；调用方法有两种；如下所示：
+
 
 ```python
-	#file对象=open("文件路径"，"mode模式"，"buffering")
-	filetop=open("D:\python\text.txt","r","0(False)/1(True)")
+	#该方法需要手动关闭文件：使用.close()方法
+	filepoint=open("D:\python\text.txt","r",0(False)/1(True))
+	或
+	#该方法在文件使用后会自动关闭文件
+	with open("D:\python\text.txt","r",0(False)/1(True)) as filepoint:
 ```
 
 &emsp;&emsp;其中mode的值为：
@@ -1052,7 +1056,140 @@
 |"b"|二进制模式，可添加到其他模式中使用，例如"rb":读取二进制文件|
 |"+"|读/写模式，可添加到其他模式使用，例如"r+"：打开文件并读写。|
 
-&emsp;&emsp;buffering参数为1时表示I/O有缓冲，为0时表示I/O无缓冲。当参数大于1时，表示缓冲区大小，以字节为单位，负数表示默认缓冲区大小。
+&emsp;&emsp;buffering参数为1时表示I/O有缓冲，为0时表示I/O无缓冲，<font color=#ff00 size=3 face="">python3中文本文件不能设置buffering = 0，而二进制文件可以。</font>当参数大于1时，表示缓冲区大小，以字节为单位，负数表示默认缓冲区大小。<font color=#ff00 size=3 face="">注意：缓冲区指的是程序一次性从外存（ROM）读取到内存（RAM）中的数据量，与程序性能和处理数据速度有关，与总共读取的数据量无关。</font> 示例如下：
+
+```python
+	# file对象=open("文件路径"，"mode模式"，"buffering")
+	filepointer = open("F:\Test.txt", "r", 1)
+	print(filepointer)
+	textcontent=filepointer.read()
+	print(textcontent)
+
+	#结果：
+	<_io.TextIOWrapper name='F:\\Test.txt' mode='r' encoding='cp936'>
+	hello,word!
+```
+
+## 4.2 读文本文件
+
+&emsp;&emsp;读取文本文件的方法主要有以下三种：
+
+|方法|描述|
+|:-:|-|
+|read()|将整个文件的内容读取为一个字符串，同时可以选择设置参数，如read(3):表示一次读取三个字符，注意：此处不是缓冲字符了，而是从缓冲字符中一次性读取多少字节的数据|
+|readline()|从文件中获取一个字符串，一行一行的读。<font color=#ff00 size=3 face="">读完后指定自动传递到下一行。每一行最后的回车键会算单独一行</font>|
+|readlines()|返回一个字符串列表，其中每一项是文件中每一行的字符串。|
+
+&emsp;&emsp;read()的使用方法在上一个示例中使用到了，而readline()示例如下：
+
+```python
+	filepointer = open("F:\Test.txt", "r", 1)
+	while True:
+    	textcontent=filepointer.readline()
+    	print(textcontent)
+    	if textcontent=="":
+    	    break;
+	filepointer.close()
+
+	#结果
+	第一行
+
+	第二行
+
+	第三行
+```
+
+&emsp;&emsp;readlines()的使用示例如下：
+
+```python
+	filepointer = open("F:\Test.txt", "r", 1)
+	textcontent=filepointer.readlines()
+	filepointer.close()
+	print(textcontent)
+	for line in textcontent:
+    	print(line)
+
+	#结果
+	['第一行\n', '第二行\n', '第三行']
+	第一行
+	
+	第二行
+
+	第三行
+```
+
+## 4.3 写文本文件
+
+&emsp;&emsp;因为open()方法默认打开方式是"r"读方式，所以如果进行写操作时必须注明"w"标志。同样写操作时是不能读的。同样写方法主要有两种： `write()` , `writelines()`。使用方法如下：
+
+|方法|描述|
+|:-:|-|
+|write()|字符串写入操作，示例：write("写入操作")，<font color=#ff00 size=3 face="">注意：使用"w"方式打开时将清空原有内容。</font>|
+|writelines(sequence)|向文件中写入一个序列字符串列表，如果需要换行，需要自己加入每行的换行符;sequence为序列对象名|
+
+&emsp;&emsp; `write()` 方法的使用示例如下：
+
+```python 
+	# file对象=open("文件路径"，"mode模式"，"buffering")
+	filepoint = open("F:\Test.txt", "w")
+	filepoint.write("以w方式写入！\n")
+	filepoint.close()
+	filepoint1 = open("F:\Test.txt", "a")
+	filepoint1.write("以a方式写入！\n")
+	filepoint1.close()
+```
+
+&emsp;&emsp; `writelines()` 方法的使用示例如下：
+
+```python
+	filepoint = open("F:\Test.txt", "w")
+	list1=["1","2","3","4"]
+	filepoint.writelines(list1)
+	filepoint.close()
+```
+
+## 4.4 关闭文件
+
+&emsp;&emsp;关闭文件主要有两种方法，其一是使用 `.close()` 方法关闭文件，其二是使用 `with` 关键字对文件进行自动关闭。
+
+&emsp;&emsp;**1、**使用`.close()` 方法关闭文件时还有两种思路：示例如下
+
+```python
+	#思路一
+	filepoint = open("F:\Test.txt","r")
+	textcont=filepoint.read()
+	filepoint.close()
+	print(textcont)
+	
+	#思路二
+	filepoint = open("F:\Test.txt","r")
+	try:
+    	textcont=filepoint.read()
+	finally:
+    	filepoint.close()
+	print(textcont)
+```
+
+&emsp;&emsp;**2、**使用 `with` 关键字关闭文件的示例如下：
+
+```python
+	with open("F:\Test.txt","r") as filepoint :
+    	textcont=filepoint.read()
+	print(textcont)
+```
+## 4.5 二进制文件的读/写
+	
+&emsp;&emsp;当我在小白入门时期，完全搞不懂什么是文本文件，什么是二进制文件。所以为了更好的学习python，还是先科普一下为好。直接上百度百科：[https://zhidao.baidu.com/question/1372778.html](https://zhidao.baidu.com/question/1372778.html) ；简单说就是文本文件就是经过ASCII编码后显示给我们看的中英文文件，而二进制文件就是单纯的使用0和1这个计算机唯一能识别数据流，例如音视频文件等。
+
+&emsp;&emsp;python没有二进制类型，但可以使用string类型来存储二进制数据类型，因为string是以字节为单位的。主要有<font color=#ff00 size= face="">将数据转换为字节流</font>和<font color=#ff00 size= face="">将字节流转换为数据</font>两个互逆过程
+
+<font color=#0422ff size=4 face="黑体">1、将数据转换为字节流</font>
+
+使用 `struct` 结构体中的 `pack("格式化字符串",数据)` 函数来进行转换。pack()中的参数：格式化字符串用来表示数据的数据类型（int，bool等）。示例如下：
+
+```python
+	
+```
 
 # 未完待续。。。。。。
 
