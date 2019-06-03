@@ -1203,3 +1203,10 @@
 &emsp;&emsp;使用 `struct` 结构体中的 `unpack()` 函数来还原成数据。具体示例可以查阅文献得到。
 
 
+#推荐阅读
+
+**1、Java学习中的疑难点总结**： [https://blog.csdn.net/GuoQiZhang/article/details/89784677](https://blog.csdn.net/GuoQiZhang/article/details/89784677)
+
+**2、计网，数据库学习思维导图**： [https://blog.csdn.net/GuoQiZhang/article/details/89812526](https://blog.csdn.net/GuoQiZhang/article/details/89812526)
+
+**3、Win10系统下载安装Markdown破解与右侧无法预览的解决办法**： [https://blog.csdn.net/GuoQiZhang/article/details/90315238](https://blog.csdn.net/GuoQiZhang/article/details/90315238)
