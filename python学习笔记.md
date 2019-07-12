@@ -177,9 +177,9 @@
 
 ## 1.3  Python 控制语句
 
-<font color=#ff00 size=3 face="黑体">（1）、Python使用’#’做注释符,和C、Java的’/’用法相同，但python没有多行注释符，只能用多行#代替</font>
+<font color=#ff00 size=3 face="黑体">（1）、Python使用’#’做注释符,和C、Java的’//’用法相同，但python没有多行注释符，只能用多行#代替</font>
 
-<font color=#ff00 size=3 face="黑体">（2）、Python不用大括号、begin等符号区分代码块，而是使用缩进来区分，换行使用’\’。</font>
+<font color=#ff00 size=3 face="黑体">（2）、Python不用大括号、begin等符号区分代码块，而是使用缩进来区分，换行使用’\\\’。</font>。
 
 <font color=#0422ff size=4 face="黑体">   1、选择结构 </font>
 
