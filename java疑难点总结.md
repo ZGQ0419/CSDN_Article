@@ -182,5 +182,203 @@ Eg:      //出错，超类(IOException)在前，继承类(FileNotFoundException 
 &emsp;(2)静态的内容是随着类的加载而加载，静态代码块的内容会优先执行
 &emsp;(3)子类初始化之前先会对父类进行初始化
 
+
+
+# 打印简单图形
+### 1：倒三角
+```java
+public class Test_2017_3 {
+	public static void main(String[] args)
+	{	
+		int h=7;   //行数
+		int l=13;  //列数
+		for(int i=0;i<h;i++){
+			for(int n=0;n<i;n++)
+				System.out.print(" ");
+			for(int j=i;j<l;j++){
+				System.out.print("*");
+			}
+			l--;
+			System.out.print("\n");
+		}
+	}
+}
+
+输出：
+*************
+ ***********
+  *********
+   *******
+    *****
+     ***
+      *
+```
+ ### 2：空心菱形
+```java
+ public class Test {
+	public static void main(String arg[]){
+		int count=0;
+		for(int i=0;i<9;i++){
+			//添加每行数字前的空格
+			if(i<=4){
+				count++;
+				for(int j=0;j<4-i;j++)
+					System.out.print(" ");
+			}else{
+				count--;
+				for(int j=0;j<i-4;j++)
+					System.out.print(" ");
+			}
+			//写数
+			if(i==0||i==8){
+				System.out.println(count);
+			}else{
+				//前5行
+				if(i<=4){
+					System.out.print(count);
+					for(int j=0;j<2*i-1;j++)
+						System.out.print(" ");
+					System.out.println(count);
+				}
+				//后5行
+				else{
+					System.out.print(count);
+					for(int j=0;j<15-2*i;j++)
+						System.out.print(" ");
+					System.out.println(count);	
+				}
+			}
+		}
+	}
+}
+
+输出：
+    1
+   2 2
+  3   3
+ 4     4
+5       5
+ 4     4
+  3   3
+   2 2
+    1
+```
+### 3：实心菱形
+```java
+public class Test_2014_3 {
+	public static void main(String[] args){
+		int h=7;   //行数
+		for(int i=0;i<h;i++){
+			if(i<4){
+				for(int c=0;c<3-i;c++)
+			       System.out.print(" ");
+				for(int j=0;j<2*i+1;j++)
+					System.out.print("*");
+				System.out.print("\n");
+			}else{
+				for(int a=0;a<i-3;a++)
+				   System.out.print(" ");
+				for(int j=0;j<(13-2*i);j++)
+					System.out.print("*");
+				    System.out.print("\n");
+			}
+		}
+		
+	}
+}
+
+输出：
+   *
+  ***
+ *****
+*******
+ *****
+  ***
+   *
+
+```
+### 4：实心正三角形
+```java
+package code_for_exam;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class first {
+	public static void main(String[] args) { 
+			int i = 0;
+			try {
+				i = GetInput();
+			} catch (MyException e) { 
+				e.printStackTrace();
+			}
+			Triangle tr =new Triangle();
+			tr.PrintTriangle(i);
+	}
+	// 得到控制台输入
+	public static int GetInput() throws MyException{
+		System.out.println("请输入三角形高度：");
+		int i = 0;
+		Scanner sc = new Scanner(System.in); 
+		i = sc.nextInt(); 
+		if(i == 0) {
+			throw new MyException("输入错误！");
+		}
+		return i;
+	}
+}
+//定义三角形输出类
+class Triangle {
+	public void PrintTriangle(int l) {
+		//输出每行
+		for(int i=0;i<l;i++) {
+			//最后一行
+			if(i==l-1) {
+				for(int j=0;j<2*l-1;j++) {
+					System.out.print("*");
+				}
+			}else {
+				//第一行
+				if(i==0){
+					for(int j=i; j<l-1;j++) {
+						System.out.print(" ");
+					}
+					System.out.println("*");	
+				}else {	//中间行
+					for(int j=i; j<l-1;j++) {
+						System.out.print(" ");
+					}
+					System.out.print("*");
+					
+					for(int k=0;k<2*i-1;k++) {
+						System.out.print(i);
+					}
+					System.out.println("*");	
+				}	
+			}
+		}
+		
+	}
+}	
+// 自定义异常类
+class MyException extends Exception{
+	public MyException(String msg) {
+		super(msg);
+	}
+}
+输出：
+请输入三角形高度：
+7
+      *
+     *1*
+    *222*
+   *33333*
+  *4444444*
+ *555555555*
+*************
+```
+
+
+
 # word版下载
+
 &emsp;&emsp;此总结属于个人对Java学习的见解，如有错误，欢迎通过评论批评指正！另附此篇文章的word版本的下载地址：https://download.csdn.net/download/guoqizhang/11092765
