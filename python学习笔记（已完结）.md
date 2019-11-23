@@ -1,4 +1,4 @@
-@[TOC](Python学习笔记（已完结）)
+@[TOC](目录)
 
 # 前言
 
@@ -16,13 +16,13 @@
  
 # 基础知识：Python 的数据存储机制
 
-&emsp;&emsp;每个编程语言都有其各自的存储机制，依个人愚见，学习任意一门语言，一定要了解其数据存储机制，学习Python也不例外。在学习Python时你会发现，它和C语言、Java在基础知识方面最大的不同就是python在使用变量时不用先声明再使用，而是想用某个变量时直接拿来用，这就决定了它的数据存储方式有些不同。对于python，一切变量都是对象，变量的存储采用C语言中指针的思路来进行设计，即变量存储的只是变量值的内存地址，而不是变量值本身。关于python数据储存的详细过程推荐这篇文章  [https://blog.csdn.net/u014665013/article/details/85787884](https://blog.csdn.net/u014665013/article/details/85787884)
+&emsp;&emsp;每个编程语言都有其各自的存储机制，依个人愚见，学习任意一门语言，一定要了解其数据存储机制，学习Python也不例外。在学习Python时你会发现，它和C语言、Java在基础知识方面最大的不同就是python在使用变量时不用先声明再使用，而是想用某个变量时直接拿来用，这就决定了它的数据存储方式有些不同。对于python，一切变量都是对象，变量的存储采用C语言中**指针**的思路来进行设计，即变量存储的只是变量值的内存地址，而不是变量值本身。关于python数据储存的详细过程推荐这篇文章  [https://blog.csdn.net/u014665013/article/details/85787884](https://blog.csdn.net/u014665013/article/details/85787884)
 
 # 第一章 Python基本语法
 
 ## 1.1 Python 数据类型
 
-<font color=#0422ff size=4 face="黑体">1、数值类型：</font>
+### <font color=#0422ff size=4 face="宋体">1.1.1 数值类型</font>
 
 （1）整型（int）
 
@@ -37,11 +37,11 @@
 &emsp;&emsp;&emsp;表示方法：`a+bj`或`a+bJ`或`complex(a,b)`， Python解释器结果：`（a+bj）`
 <font color=#ff00 size=3 face="黑体">总结：Python数据类型是不允许改变的，如果改变，意味着将重新分配内存空间，也表明Python是强类型的动态脚本语言，关于语言类型的分类可以参考：</font> [https://blog.csdn.net/xhg_wandering_soul/article/details/80796192](https://blog.csdn.net/xhg_wandering_soul/article/details/80796192)
 
-<font color=#0422ff size=4 face="黑体">2、字符串</font>
+### <font color=#0422ff size=4 face="宋体">1.1.2 字符串</font>
 
 &emsp;&emsp;Python将单字符和字符串合并，单引号与双引号均可使用，且效果一致。当想在字符串中嵌套字符串时内外引号需要不同（’I am”bom”!’和”I am’bom’!”）
 
-<font color=#0422ff size=4 face="黑体">3、布尔类型</font>
+### <font color=#0422ff size=4 face="宋体">1.1.3、布尔类型</font>
 
 &emsp;&emsp;只有True和False两种类型，与或非运算同C、Java。在Python中数字0、0.0、空字符串、空元组、空序列、空字典等一切空值均为False，其它值认为True，这和C语言一致，和Java不同。在Java中布尔类型为单独数据类型，不能与其他类型混合使用，例如
 
@@ -49,13 +49,53 @@
       if(1) // error
 ```
 
-<font color=#0422ff size=4 face="黑体">4、空值</font>
+### <font color=#0422ff size=4 face="宋体">1.1.4、空值</font>
 
 &emsp;&emsp;使用None表示，不支持任何运算，未指定返回值的函数自动返回None。和C语言、Java一致。
 
+<font color=#ff000 size=4 face="黑体">* Python独有特点：</font>
+1. python中没有`++`或`--`的运算符
+2. `/`是真正意义上的除法；`//`是C语言中的地板除法（floor）例子：
+
+```python
+	a=10
+	b=3
+	print(a/b)
+	print(a//b)
+	#结果
+	3.3333333333333335
+	3
+```
+
+ 3. `**`表示幂运算，例：
+
+```python
+	a=10
+	b=2
+	print(a**b)
+	#结果
+	100
+```
+ 4. `3 < 4 < 5` 等同于`3<4 and 4<5`
+
+ 5. 运算符优先级：从上到下，从左到右逐次降低：
+ 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190828220220850.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0d1b1FpWmhhbmc=,size_16,color_FFFFFF,t_70)
+
+ 6. Python使用`断言（assert）`来检查错误点：如果其后面的表达式为假时则抛出异常。例如：
+```python
+	assert 3>4
+	#结果：
+	AssertionError    Traceback (most recent call last)
+	<ipython-input-8-ccf53c07db24> in <module>()
+	----> 1 assert 3>4
+	
+	assert 3<4
+	#结果（无）
+```
 ## 1.2  Python 序列数据结构
 
-<font color=#0422ff size=4 face="黑体">1、列表（List） ——元素可变</font>
+### <font color=#0422ff size=4 face="宋体">1.2.1、列表（List） ——元素可变（打了激素的数组）</font>
 
 **（1）创建**：
 
@@ -68,7 +108,7 @@
 **（2）访问（索引）**：
 
 
-&emsp;&emsp;类似数组采用截取（切片）的方式，eg：`list1[0]，list[1:5]`
+&emsp;&emsp;类似数组采用截取（切片）的方式，eg：`list1[0]，list[1:5]`  左闭右开。
 
 &emsp;&emsp;A:跳跃取值：`List1[a:b:c]`  其中a为切片起点，b为切片终止点，c为跳转间距。
 
@@ -85,6 +125,7 @@
 ```
 
 &emsp;&emsp;B尾部添加：`list1.append(4)`：括号内只能加一个。
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  `list1.extend(a)`：a为列表。
 
 &emsp;&emsp;C中间插入：`list1.insert(a,b)`：a为插入的位置；b为插入的值
 
@@ -98,38 +139,145 @@
 **（6）判断**：`a in list1` ：返回True说明a在list1中，False说明a不在list1中。
 
 **（7）排序**：`list1.sort()`  默认升序
+&emsp;&emsp;&emsp;&emsp;&emsp;`list1.reverse()`：将列表整体反转。
 
 **（8）长度**：`len(list1) 、  list1.count(a)`：查询a元素在列表中出现的次数，
 
 **（9）位置**：`list1.index(a)`：查询a在列表中首次出现的位置。
+&emsp;&emsp;&emsp;&emsp;&emsp;`list1.index(a,b,c)`：表示查询值a在列表中从位置b到位置c之间首次出现的位置。区间依然是`[b,c)`。
 
-**（10）列表生成式**：`range(a,b)`：输出从a到b-1的所有值，使用`list(range(a,b))`,生成列表。
+**（10）分片**：`list1[a:b]`：取list1中[a,b)中的元素。
+
+**（11）列表生成式**：`range(a,b)`：输出从a到b-1的所有值，使用`list(range(a,b))`,生成列表。
 
 &emsp;&emsp; A  for循环：`[x*x for x in range(1,11)]` 
 
 &emsp;&emsp;  B  if判断：`[x*x for x in range(1,11) if x%2==0]` 
-    
-<font color=#0422ff size=4 face="黑体">   2、元组(tuple)——元素不可变</font>
 
-**(1)特点**：与列表相似，不同是使用小括号，且元素不能修改。
+**（12）列表的比较**：两个列表比较时默认比较第一个元素值的大小
+
+**（13）计数**：`list1.count(a)`：表示a在列表中出现的次数
+
+```python
+	list1 = [123,456]
+	list2 = [234,123]
+	print(list1>list2)
+
+	#结果
+	False
+```
+    
+### <font color=#0422ff size=4 face="宋体">   1.2.2、元组(tuple)——元素不可变（带上了枷锁的列表）</font>
+
+**(1)特点**：与列表相似，不同是使用**小括号**，且元素不能修改。
 
 **(2)创建**：
 
 ```python
-    方法1： tuple1=(1,2,3,"中国")   
-    方法2： tuple1="中国","英国",100,200 #（可以省略括号）
+    方法1： tuple1 = (1,2,3,"中国") 或 tuple1 = (1,)  
+    方法2： tuple1 = "中国","英国",100,200     #（可以省略括号，逗号才是关键）
 ```
 
  &emsp;&emsp;  &emsp;当只有单元素时，为了与单变量区别，在元素后面要加逗号。
 
-**(3)连接/截取（切片）**：与列表相同
+**(3)连接/截取（切片）**：与列表近似
+
+```python
+	tuple1=(1,2,3)
+	tuple2 = (4,5,6)
+	tuple1 =tuple1 + tuple2
+	#结果
+	(1, 2, 3, 4, 5, 6)
+```
 
 **(4)删除**：不能删除元素，只能删除整个元组：`del tuple1`
 
 **(5)字符串、列表、元组转换**：`str()、list()、tuple()`
 
+**(6)查看元组类型的函数**： `dir(tuple)` 例如：
 
- <font color=#0422ff size=4 face="黑体">   3、字典（dict） ——键唯一且无序</font>
+```python
+dir(tuple)
+#结果
+['__add__',
+ '__class__',
+ '__contains__',
+ '__delattr__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__getitem__',
+ '__getnewargs__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__iter__',
+ '__le__',
+ '__len__',
+ '__lt__',
+ '__mul__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__rmul__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ 'count',
+ 'index']
+```
+
+
+**(7)字符串常用方法**：
+
+|方法|解释|
+|-|:-|
+|capitalize()|把字符串的第一个字符改为大写|
+|casefold()|把整个字符串的所有字符改为小写|
+|center(width)|将字符串居中，并使用空格填充至长度 width 的新字符串|
+|count(sub[, start[, end]])|返回 sub 在字符串里边出现的次数，start 和 end 参数表示范围，可选。|
+|encode(encoding='utf-8', errors='strict')|以 encoding 指定的编码格式对字符串进行编码。|
+|endswith(sub[, start[, end]])|检查字符串是否以 sub 子字符串结束，如果是返回 True，否则返回 False。start 和 end 参数表示范围，可选。|
+|expandtabs([tabsize=8])|把字符串中的 tab 符号（\t）转换为空格，如不指定参数，默认的空格数是 tabsize=8。|
+|find(sub[, start[, end]])|检测 sub 是否包含在字符串中，如果有则返回索引值，否则返回 -1，start 和 end 参数表示范围，可选。|
+|index(sub[, start[, end]])|跟 find 方法一样，不过如果 sub 不在 string 中会产生一个异常。|
+|isalnum()|如果字符串至少有一个字符并且所有字符都是字母或数字则返回 True，否则返回 False。|
+|isalpha()|如果字符串至少有一个字符并且所有字符都是字母则返回 True，否则返回 False。|
+|isdecimal()|如果字符串只包含十进制数字则返回 True，否则返回 False。|
+|isdigit()|如果字符串只包含数字则返回 True，否则返回 False。|
+|islower()|如果字符串中至少包含一个区分大小写的字符，并且这些字符都是小写，则返回 True，否则返回 False。|
+|isnumeric()|如果字符串中只包含数字字符，则返回 True，否则返回 False。|
+|isspace()|如果字符串中只包含空格，则返回 True，否则返回 False。|
+|istitle()|如果字符串是标题化（所有的单词都是以大写开始，其余字母均小写），则返回 True，否则返回 False。|
+|isupper()|如果字符串中至少包含一个区分大小写的字符，并且这些字符都是大写，则返回 True，否则返回 False。|
+|join(sub)|以字符串作为分隔符，插入到 sub 中所有的字符之间。|
+|ljust(width)|返回一个左对齐的字符串，并使用空格填充至长度为 width 的新字符串。|
+|lower()|转换字符串中所有大写字符为小写。|
+|lstrip()|去掉字符串左边的所有空格|
+|partition(sub)|找到子字符串 sub，把字符串分成一个 3 元组 (pre_sub, sub, fol_sub)，如果字符串中不包含 sub 则返回 ('原字符串', '', '')|
+|replace(old, new[, count])|把字符串中的 old 子字符串替换成 new 子字符串，如果 count 指定，则替换不超过 count 次。|
+|rfind(sub[, start[, end]])|类似于 find() 方法，不过是从右边开始查找。|
+|rindex(sub[, start[, end]])|类似于 index() 方法，不过是从右边开始。|
+|rjust(width)|返回一个右对齐的字符串，并使用空格填充至长度为 width 的新字符串。|
+|rpartition(sub)|类似于 partition() 方法，不过是从右边开始查找。|
+|rstrip()|删除字符串末尾的空格。|
+|split(sep=None, maxsplit=-1)|不带参数默认是以空格为分隔符切片字符串，如果 maxsplit 参数有设置，则仅分隔 maxsplit 个子字符串，返回切片后的子字符串拼接的列表。|
+|splitlines(([keepends]))|在输出结果里是否去掉换行符，默认为 False，不包含换行符；如果为 True，则保留换行符。|
+|startswith(prefix[, start[, end]])|检查字符串是否以 prefix 开头，是则返回 True，否则返回 False。start 和 end 参数可以指定范围检查，可选。|
+|strip([chars])|删除字符串前边和后边所有的空格，chars 参数可以定制删除的字符，可选。|
+|swapcase()|翻转字符串中的大小写。|
+|title()|返回标题化（所有的单词都是以大写开始，其余字母均小写）的字符串。|
+|translate(table)|根据 table 的规则（可以由 str.maketrans('a', 'b') 定制）转换字符串中的字符。|
+|upper()|转换字符串中的所有小写字符为大写。|
+|zfill(width)|返回长度为 width 的字符串，原字符串右对齐，前边用 0 填充。|
+### <font color=#0422ff size=4 face="宋体">   1.2.3、字典（dict）——键唯一且无序</font>
     
 **(1）创建**：由键值对（key => value）组成，用花括号{}表示。eg: dict1={key1:1,key2: 2} 
 
@@ -155,15 +303,24 @@
 
 **(5)判断**：使用in返回值判断字典是否存在键   eg: `“key1” in dict1` 
 
- <font color=#0422ff size=4 face="黑体">   4、集合（set）———无序不重复</font>
+```python 
+	dict1 = {1:'one',2:'two',3:'three'}
+	print(dict1[2])
+	list(dict1.items())
+	#结果
+	'two'
+	[(1, 'one'), (2, 'two'), (3, 'three')]
+```
+
+### <font color=#0422ff size=4 face="宋体">   1.2.4、集合（set）———无序不重复</font>
 
 **（1）创建**：使用大括号{} 或set()函数。注：创建一个空集合时必须使用set()函数。
 
 ```python
     方法1：set1={1,2,3,4,5} 
-    方法2：set1=set()
+    方法2：set1=set(空/元组/列表)
 ```
-**（2）判断**：in使用方法与字典一致
+**（2）查询访问**：in使用方法与字典一致
 
 **（3）集合运算**： 
 
@@ -175,13 +332,31 @@
 
 &emsp;&emsp;   D：异或：’^’
 
+**（4）添加**：
+&emsp;&emsp; 使用 `add` 或`remove`增加或删除某个元素
+
+```python 
+	set1={1,2,3,4,5}
+	2 in set1
+	set1.add(8)
+	print(set1)
+	set1.add((10,22))
+	print(set1)
+	set1.remove(2)
+	print(set1)
+	#结果
+	True
+	{1, 2, 3, 4, 5, 8}
+	{1, 2, 3, 4, 5, 8, (10, 22)}
+	{1, 3, 4, 5, 8, (10, 22)}
+```
 ## 1.3  Python 控制语句
 
-<font color=#ff00 size=3 face="黑体">（1）、Python使用’#’做注释符,和C、Java的’//’用法相同，但python没有多行注释符，只能用多行#代替</font>
+<font color=#ff00 size=3 face="黑体">（1）、Python使用’#’做注释符,和C、Java的’/’用法相同，但python没有多行注释符，只能用多行#代替</font>
 
-<font color=#ff00 size=3 face="黑体">（2）、Python不用大括号、begin等符号区分代码块，而是使用缩进来区分，换行使用’\\\’。</font>。
+<font color=#ff00 size=3 face="黑体">（2）、Python不用大括号、begin等符号区分代码块，而是使用缩进来区分，换行使用’\’。</font>
 
-<font color=#0422ff size=4 face="黑体">   1、选择结构 </font>
+### <font color=#0422ff size=4 face="宋体">   1.3.1、选择结构 </font>
 
    &emsp;&emsp; if....else 和if....elif.....else：使用方法与C、Java相似，区别：多了elif关键字；选择条件不用小括号，且在条件后面加冒号。Eg：
    
@@ -192,7 +367,7 @@
     else:
    		........
 ```
-<font color=#0422ff size=4 face="黑体"> 2、循环结构  </font>
+### <font color=#0422ff size=4 face="宋体"> 1.3.2、循环结构  </font>
 
  &emsp;&emsp;  Python只提供for 和while两种循环，不使用do......while。
 
@@ -213,9 +388,36 @@
 
 &emsp;&emsp; C：continue与break：使用方法和C、Java相同
 
+### <font color=#0422ff size=4 face="宋体">   1.3.3、断言 </font>
+ &emsp;&emsp; 在开发一个程序时候，与其让它运行时崩溃，不如在它出现错误条件时就抛出异常（返回错误）。这时候断言`assert` 就显得非常有用。assert的语法格式：、
+
+```python
+  	a_str = "hello world!"
+	assert type(a_str) == str
+	assert type(a_str) == int
+	assert 1
+	assert 0
+	#结果
+	1：
+	（无）
+	2：
+	AssertionError    Traceback (most recent call last)
+	<ipython-input-9-40bbc368ad99> in <module>()
+	----> 1 assert type(a_str) == int
+	AssertionError:
+	3：
+	（无）
+	4：
+	AssertionError     Traceback (most recent call last)
+	<ipython-input-10-34d6bc1d929c> in <module>()
+	----> 1 assert 0
+	AssertionError: 
+```
+
+由例子可知：断言表示的含义是：如果断言后面的条件为1或真，则不报错，否则报错。
 ## 1.4  Python 函数与模块
 
-<font color=#0422ff size=4 face="黑体">   1、函数的定义 </font>
+### <font color=#0422ff size=4 face="宋体">   1.4.1、函数的定义 </font>
 
 ```python
     def  函数名（函数参数）:
@@ -226,22 +428,105 @@
 例如
 
 ```python
-    def hello(arg)
+    def hello()
             print("hello,word!")
             return 0
 ```
 
 &emsp;&emsp;函数参数不用指定参数类型，因为python中的变量是动态脚本语言。函数定义的采用缩进方式划分。return返回值可选，且可以在任意地方出现，执行return后函数结束。
 
-<font color=#0422ff size=4 face="黑体">   2、函数的使用 </font>
-
-&emsp;&emsp;和C语言一致，先定义再使用。例如：
+### <font color=#0422ff size=4 face="宋体">   1.4.2、函数的形参和实参</font>
+&emsp;&emsp;首先先说一下**函数文档**：python中在函数第一行使用引号`''` 来定义函数文档，和注释不同的是可以调用函数内置属性`.__doc__`来查看文档。例如：
 
 ```python
-    hello(1)
+	def func():
+		'这是函数文档！'
+	func.__doc__
+
+	#结果
+	'这是函数文档！'
+```
+&emsp;&emsp;接着说一下**关键字参数**，它是指在传参数时可以把形参的名字和值直接联系起来，而解决了传参时顺序不一致而产生错误的问题；例如：
+
+```python
+	def func(name,words):
+		print(name + '说：' + words)
+	func('鲁迅','工程小猿写的博客很不错！')
+	func(words = '工程小猿写的博客很不错！',name = '鲁迅')
+	#结果
+	鲁迅说：工程小猿写的博客很不错！
+	鲁迅说：工程小猿写的博客很不错！
+```
+&emsp;&emsp;接着说一下**收集参数**，当传入的参数过多或者不定时可以使用收集参数。关键字为：`*params` 类似于C语言传入带指针的数组进行操作：
+
+```python
+	def func(*params):
+		print('收集参数的长度：', len(params))
+		print('第二个参数是：' , params[1])
+	func(1,2,3,4)
+	#结果	
+	收集参数的长度： 4
+	第二个参数是： 2
+```
+```python
+	def func(*p,name):
+		print('收集参数的长度：', len(p))
+		print('第二个参数是：' , p[1])
+		print('name：' , name)
+	func(1,2,3,name = 4)
+	#结果	
+	收集参数的长度： 3
+	第二个参数是： 2
+	name： 4
 ```
 
-<font color=#0422ff size=4 face="黑体">   3、闭包(函数嵌套) </font>
+### <font color=#0422ff size=4 face="宋体">   1.4.3、返回值 </font>
+&emsp;&emsp;因为python属于动态数据类型的语言，所以在函数定义时是不需要指明返回值的，并且可以省略返回值，返回多个值（返回多个值时使用元组或列表）：
+
+```python
+    def func():
+    	return 1,2,3
+    func()
+    #结果
+    1,2,3
+```
+### <font color=#0422ff size=4 face="宋体">   1.4.4、全局变量与局部变量 </font>
+&emsp;&emsp;和C语言、Java一样，全局变量全局可见，而局部变量只在函数内部有效。由于python变量不用事先定义，所以<font color=#ff00 size=3 face="黑体">在函数内部正常是只能使用全局变量而不能改变全局变量的值。</font>因为在函数内部如果使用所谓的全局变量，其实是在函数内新定义了一个和全局变量一样的局部变量，所以全局变量未能得到修改，想在函数内对全局变量进行修改时必须使用`global`关键字：
+
+```python 
+	#错误示范
+	big = 0      #这是全局变量
+	def func():
+    	big=1   #这个是另外一个局部变量
+	func()
+	print(big)
+	#结果
+	0
+```
+```python 
+	#正确示范
+	big = 0      #这是全局变量
+	def func():
+    	global big
+    	big = 1   #对全局变量进行修改,不能使用：global big = 1 这种形式
+	func()
+	print(big)
+	#结果
+	1
+```
+&emsp;&emsp;还有一种思路：可以使用列表的方法来修改参数值：
+
+```python 
+	#使用列表
+	big = [0]
+	def func():
+		big[0] = 1
+	func()
+	print(big[0])
+	#结果
+	1
+```
+### <font color=#0422ff size=4 face="宋体">   1.4.5、闭包(函数嵌套) </font>
 
 &emsp;&emsp;在函数内部再定义一个嵌套函数，可以将内部的嵌套函数作为外层函数的返回结果。
 
@@ -263,9 +548,38 @@
     print(test(2,3))
     #结果：5
 ```
+或
+```python
+    print(get()(2,3))
+    #结果：5
+```
+### <font color=#0422ff size=4 face="宋体">   1.4.6、lambda、filter()、map()表达式 </font>
+&emsp;&emsp;lambda表达式和函数作用相似，其使用方法为：`lambda  参数x ： 返回值` 例如：
 
-<font color=#0422ff size=4 face="黑体">   4、函数递归调用 </font>
+```python
+	g=lambda x : x**2
+	print(type(g))
+	print(g(2)) 
+	#结果
+	<class 'function'>
+	4
+```
+&emsp;&emsp;filter()是一种过滤器函数，过滤掉值为 0 或 false 的值。传入两个参数，第一个可以为None或函数，为None时：只挑选出后面列表中的真值，如果传入的是函数，则将后面的数值带入到函数中计算后返回真值：
+```python 
+	list(filter(None,[1,0,True,False]))
+	list(filter(lambda x : x%2,range(10)))
+	#结果
+	[1, True]
+	[1, 3, 5, 7, 9]
+```
+&emsp;&emsp;map(func, *iterables)函数是映射函数，传入两个参数，第一个参数为函数，第二个为一个迭代器（类似数组），其作用将迭代器中的数值依次带入函数中计算后，返回结果：
 
+```python 
+	list(map(lambda x : x**2,range(10)))
+	#结果
+	[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+```
+### <font color=#0422ff size=4 face="宋体">   1.4.7、函数递归调用 </font>
 &emsp;&emsp;<font color=#ff00 size=3 face="黑体">和C语言一致，eg:</font>
 
 ```python
@@ -279,7 +593,7 @@
      #结果：30
 ```
 
-<font color=#0422ff size=4 face="黑体">   5、模块（Java中的包） </font>
+### <font color=#0422ff size=4 face="宋体">   1.4.8、模块（Java中的包） </font>
 
 &emsp;&emsp;模块就是一个保存python代码的文件，在python中使用import来引入模块。<font color=#ff00 size=3 face="黑体">和Java的包一致，可以认为python的模块就是Java的包，就像C语言的函数和Java的方法一样</font>
 
@@ -319,6 +633,120 @@
 
 &emsp;&emsp;  python中每一个 .py 文件都可以作为一个模块使用，文件名就是模块名；直接使用上述方法导入即可，甚是”流氓“。
 
+## 1.5 格式化输入输出与异常处理
+### <font color=#0422ff size=4 face="宋体">   1.5.1、字符串函数format </font>
+
+```python
+	print("{0} love {1}.{2}".format("I","hello","world"))
+	print("{a} love {b}.{c}".format(a="I",c="hello",b="world"))
+	print("{a} love {b}.{2}".format(a="I",b="hello","world"))
+	print("{a:.1f} {b}".format(a = 29.78,b = "GB"))
+	#结果
+	1：
+	I love hello.world
+	2：
+	I love world.hello
+	3：
+	错误
+	4:
+	29.8GB (四舍五入)
+```
+### <font color=#0422ff size=4 face="宋体">   1.5.2、格式化字符含义 </font>
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190902150523311.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0d1b1FpWmhhbmc=,size_16,color_FFFFFF,t_70)
+例子：
+```python
+	print('%c %c %c' %(97,98,99))
+	print('%s' %'hello world')
+	print('%d + %d = %d' %(4,5,4+5))
+	print('%f' %2.678)
+	print('%5.2f' %2.678)
+	print('%5d' %2.678)
+	print('%05d' %7)
+	#结果
+	1：
+	a,b,c
+	2:
+	hello world
+	3:
+	4 + 5 = 9
+	4:
+	2.678000
+	5:
+	 2.68
+	6:
+	     2
+	7:
+	00007 
+```
+### <font color=#0422ff size=4 face="宋体">   1.5.3、异常处理</font>
+![ ](https://img-blog.csdnimg.cn/20190903164014142.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0d1b1FpWmhhbmc=,size_16,color_FFFFFF,t_70)![在这里插入图片描述](https://img-blog.csdnimg.cn/20190903164625948.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0d1b1FpWmhhbmc=,size_16,color_FFFFFF,t_70)
+&emsp;&emsp;还可以使用
+```python 
+	try:
+		检测范围
+	except Except [as reason]:
+		异常处理代码
+	finally:    #finally有无均可
+		一定执行的语句
+```
+或  使用 `raise Except` 来直接引出一个异常。
+例子：
+```python 
+	try:
+		int(a)
+		sum=1+'1'
+		f=open('我为什么这么帅.txt')
+		print(f.read())
+		f.close()
+	except OSError as reason:
+		print('文件出错啦'+str(reason))
+	except TypeError as reason:
+		print('文件类型出错啦'+str(reason))
+	except: #当不知道异常类型时可以不写，但不推荐这种做法
+		print('不知道啥原因就出错啦')
+	finally:
+		print('我是一定执行的代码部分')
+```
+和
+```python 
+	raise TypeError
+```
+&emsp;&emsp; <font color=#ff00 size=4 face="宋体">**注意：上述except中检测出第一个异常后下面的except便不在检查，所以为了尽可能查到具体原因，python规定不带异常类型的 except必须放到最后面**</font>
+
+### <font color=#0422ff size=4 face="宋体">   1.5.4、with语句</font>
+&emsp;&emsp; with 语句适用于对资源进行访问的场合，确保不管使用过程中是否发生异常都会执行必要的“清理”操作，释放资源，比如**文件使用后自动关闭**、**线程中锁的自动获取和释放**等。
+原理：
+
+>  with 语句实质是上下文管理。 1、上下文管理协议。包含方法__enter__() 和
+> __exit__()，支持该协议对象要实现这两个方法。 2、上下文管理器，定义执行with语句时要建立的运行时上下文，负责执行with语句块上下文中的进入与退出操作。
+> 3、进入上下文的时候执行__enter__方法，如果设置as var语句，var变量接受__enter__()方法返回值。
+> 4、如果运行时发生了异常，就退出上下文管理器。调用管理器__exit__方法。
+
+```python
+	with open('d:\\xxx.txt') as fp:
+	     print fp.read()
+```
+```python
+	class Mycontex(object):
+    def __init__(self,name):
+        self.name=name
+    def __enter__(self):
+        print("进入enter")
+        return self
+    def do_self(self):
+        print(self.name)
+    def __exit__(self,exc_type,exc_value,traceback):
+        print("退出exit")
+        print(exc_type,exc_value)
+if __name__ == '__main__':
+    with Mycontex('test') as mc:
+        mc.do_self()
+    #输出
+    进入enter
+    test
+    退出exit
+    None None
+```
 # 第二章 Python面向对象
 
 ## 说明
@@ -327,7 +755,7 @@
 
 ## 2.1 定义和使用类
 
-<font color=#0422ff size=4 face="黑体">   1、类的定义 </font>
+### <font color=#0422ff size=4 face="宋体">   2.1.1、类的定义 </font>
 
 ```python
     class  类名:
@@ -360,7 +788,7 @@
 
 &emsp;&emsp;<font color=#ff00 size=3 face="黑体"> 简单说，python中的self和Java的this一样，代表类的实例，而非类。更多关于self的详细的说明请参考</font>[https://blog.csdn.net/daocaoren1543169565/article/details/80626035](https://blog.csdn.net/daocaoren1543169565/article/details/80626035)
 
-<font color=#0422ff size=4 face="黑体">   2、类的使用 </font>
+### <font color=#0422ff size=4 face="宋体">   2.1.2、类的使用 </font>
 
 
 &emsp;&emsp;类的使用和Java也类似，都是以创建对象的思想来使用，类是对象的模板。调用（创建对象）方法为：
@@ -411,6 +839,7 @@
 
 ## 2.3 析构函数
    
+&emsp;&emsp;析构函数(destructor) 与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数往往用来做“清理善后” 的工作，所以析构函数全部是在python中符合一定标准时自动执行的。
 &emsp;&emsp;Java自动进行内存回收。python也默认提供函数进行回收内存。此外python还提供一个内存回收函数（`__del__()`）。当使用del 删除对象时，系统自动调用 `__del__()` 析构函数进行内存释放，另外当对象在某个作用域中调用完毕，在跳出其作用域的同时析构函数也会被调用一次，这样可以用来释放内存空间。析构函数的演示调用如下：
 ```python
     class Test:
@@ -425,7 +854,8 @@
     helloworld
     该对象已删除！
  ```
-
+关于数值（算数）运算的析构函数如下图：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190904212058797.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0d1b1FpWmhhbmc=,size_16,color_FFFFFF,t_70)
 ## 2.4 实例属性与类属性（成员变量）
    
 &emsp;&emsp;属性又可以叫成员变量，其分为实例属性与类属性。简单说，实例属性就是在初始化时 `__init__()` 函数中定义的，定义与引用时都要在前加上对象名。而类属性就是在成员函数（方法）外定义的，使用时可以用对象名来引用或使用类名访问，例如：
@@ -620,6 +1050,7 @@
     通过类名称调用
 ```
 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190904195534605.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0d1b1FpWmhhbmc=,size_16,color_FFFFFF,t_70)
 ## 2.7 类的继承
 
 &emsp;&emsp;类的继承这部分思想与Java相同，只是表达方式不大相同而已。既然存在继承，就会有父类（基类）和子类（派生类）。<font color=#ff00 size=3 face="黑体"> 子类可以继承父类的公有成员，但不能继承私有成员。</font>类继承的语法为：
@@ -1055,7 +1486,7 @@
 |"a"|追加模式，如果文件不存在，则先创建文件再打开；如果文件存在，打开文件后将新内容追加到原内容之后|
 |"b"|二进制模式，可添加到其他模式中使用，例如"rb":读取二进制文件|
 |"+"|读/写模式，可添加到其他模式使用，例如"r+"：打开文件并读写。|
-
+![](https://img-blog.csdnimg.cn/20190903145438223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0d1b1FpWmhhbmc=,size_16,color_FFFFFF,t_70)
 &emsp;&emsp;buffering参数为1时表示I/O有缓冲，为0时表示I/O无缓冲，<font color=#ff00 size=3 face="">python3中文本文件不能设置buffering = 0，而二进制文件可以。</font>当参数大于1时，表示缓冲区大小，以字节为单位，负数表示默认缓冲区大小。<font color=#ff00 size=3 face="">注意：缓冲区指的是程序一次性从外存（ROM）读取到内存（RAM）中的数据量，与程序性能和处理数据速度有关，与总共读取的数据量无关。</font> 示例如下：
 
 ```python
@@ -1079,6 +1510,8 @@
 |read()|将整个文件的内容读取为一个字符串，同时可以选择设置参数，如read(3):表示一次读取三个字符，注意：此处不是缓冲字符了，而是从缓冲字符中一次性读取多少字节的数据|
 |readline()|从文件中获取一个字符串，一行一行的读。<font color=#ff00 size=3 face="">读完后指定自动传递到下一行。每一行最后的回车键会算单独一行</font>|
 |readlines()|返回一个字符串列表，其中每一项是文件中每一行的字符串。|
+
+![](https://img-blog.csdnimg.cn/20190903150516896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0d1b1FpWmhhbmc=,size_16,color_FFFFFF,t_70)
 
 &emsp;&emsp;read()的使用方法在上一个示例中使用到了，而readline()示例如下：
 
@@ -1203,7 +1636,7 @@
 &emsp;&emsp;使用 `struct` 结构体中的 `unpack()` 函数来还原成数据。具体示例可以查阅文献得到。
 
 
-#推荐阅读
+# 推荐阅读
 
 **1、Java学习中的疑难点总结**： [https://blog.csdn.net/GuoQiZhang/article/details/89784677](https://blog.csdn.net/GuoQiZhang/article/details/89784677)
 
